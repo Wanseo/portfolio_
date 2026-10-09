@@ -5,6 +5,9 @@ import viteLogo from './assets/vite.svg'
 import { setupCounter } from './counter.ts'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
+<header class="portfolio-header">
+  <h1 class="portfolio-title">Wanseo's Portfolio</h1>
+</header>
 <section id="center">
   <div class="hero">
     <img src="${heroImg}" class="base" width="170" height="179">
@@ -12,7 +15,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <img src="${viteLogo}" class="vite" alt="Vite logo" />
   </div>
   <div>
-    <h1>Get started</h1>
+    <h2>Get started</h2>
     <p>Edit <code>src/main.ts</code> and save to test <code>HMR</code></p>
   </div>
   <button id="counter" type="button" class="counter"></button>
