@@ -32,6 +32,7 @@
 
 body {
   margin: 0;
+  isolation: isolate;
   min-height: 100svh;
   background-color: var(--bg);
   background-image:
@@ -45,6 +46,18 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: url('./assets/grain.svg') repeat;
+  background-size: 256px 256px;
+  mix-blend-mode: soft-light;
+  opacity: 0.55;
 }
 
 h1,
