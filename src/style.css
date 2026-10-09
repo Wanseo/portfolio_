@@ -53,6 +53,9 @@ footer{border-top:0}
 @media(max-width:600px){.intro-top{gap:2px}.intro-top>span{white-space:nowrap;font-size:clamp(7px,2.2vw,12px);letter-spacing:0}.intro-instagram{display:inline-flex;width:22px;height:24px}.intro-instagram svg{width:13px;height:13px}}
 
 .project-role {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
   margin: 24px 0;
   font-family: 'DM Sans', Arial, sans-serif;
 }
@@ -63,7 +66,7 @@ footer{border-top:0}
   color: #77776f;
 }
 .project-role dd {
-  margin: 8px 0 0;
+  margin: 0;
   font-size: 14px;
   line-height: 1.8;
 }
