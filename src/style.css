@@ -30,7 +30,7 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background: url('./assets/grain.svg') repeat;
-  background-size: 256px 256px;
+  background-size: 192px 192px;
   mix-blend-mode: overlay;
   opacity: 0.9;
 }
