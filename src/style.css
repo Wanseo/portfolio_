@@ -14,10 +14,10 @@ body {
   min-height: 100svh;
   background-color: var(--bg);
   background-image:
-    radial-gradient(ellipse at 35% 0%, rgba(164, 210, 247, 0.7), transparent 65%),
-    radial-gradient(ellipse at 90% 55%, rgba(108, 181, 242, 0.65), transparent 65%),
-    radial-gradient(ellipse at 0% 100%, rgba(73, 140, 207, 0.45), transparent 60%),
-    linear-gradient(120deg, #79addb, #83c0ef 50%, #71b5ed);
+    radial-gradient(ellipse at 85% 5%, rgba(195, 229, 255, 0.9), transparent 60%),
+    radial-gradient(ellipse at 65% 65%, rgba(95, 176, 243, 0.75), transparent 55%),
+    radial-gradient(ellipse at 0% 100%, rgba(22, 68, 148, 0.85), transparent 65%),
+    linear-gradient(130deg, #497bb8, #78b9eb 52%, #acd8fa);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
