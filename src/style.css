@@ -1,7 +1,7 @@
 :root {
   --text: #6b6375;
   --text-h: #08060d;
-  --bg: #82cce4;
+  --bg: #79b9eb;
   --border: rgba(93, 65, 93, 0.16);
   --code-bg: #f4f3ec;
   --accent: #aa3bff;
@@ -36,10 +36,10 @@ body {
   min-height: 100svh;
   background-color: var(--bg);
   background-image:
-    radial-gradient(ellipse at 35% 0%, rgba(170, 224, 239, 0.7), transparent 65%),
-    radial-gradient(ellipse at 90% 55%, rgba(117, 211, 234, 0.65), transparent 65%),
-    radial-gradient(ellipse at 0% 100%, rgba(83, 171, 195, 0.45), transparent 60%),
-    linear-gradient(120deg, #82c3d8, #8bd1e7 50%, #79cce7);
+    radial-gradient(ellipse at 35% 0%, rgba(164, 210, 247, 0.7), transparent 65%),
+    radial-gradient(ellipse at 90% 55%, rgba(108, 181, 242, 0.65), transparent 65%),
+    radial-gradient(ellipse at 0% 100%, rgba(73, 140, 207, 0.45), transparent 60%),
+    linear-gradient(120deg, #79addb, #83c0ef 50%, #71b5ed);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
