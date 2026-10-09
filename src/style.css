@@ -41,14 +41,14 @@ body::before {
 }
 
 .portfolio-header {
-  padding: clamp(28px, 5vh, 56px) 20px 24px;
+  padding: clamp(52px, 9vh, 96px) 20px 24px;
 }
 
 .portfolio-title {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   font-size: clamp(30px, 5vw, 56px);
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.035em;
   color: #fff;
