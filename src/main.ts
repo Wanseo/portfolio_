@@ -28,7 +28,7 @@ for (const dialog of [projectDialog]) {
 }
 document.querySelectorAll<HTMLButtonElement>('[data-project]').forEach(button => button.addEventListener('click', () => {
   const project = projects.find(item => item.id === button.dataset.project)!
-  document.querySelector('#dialog-content')!.innerHTML = `<div class="dialog-art">${art(project)}</div><div class="dialog-copy"><span class="eyebrow">${escape(project.category)} / ${project.year}</span><h2 id="dialog-title">${escape(project.title)}</h2><p>${escape(project.description)}</p>${project.url && external(project.url) ? `<a class="outline-button" href="${escape(project.url)}" target="_blank" rel="noopener noreferrer">VISIT WEBSITE ${arrow}</a>` : '<span class="sample-label">CONCEPT PREVIEW · 샘플 프로젝트</span>'}</div>`
+  document.querySelector('#dialog-content')!.innerHTML = `<div class="dialog-art">${art(project)}</div><div class="dialog-copy"><span class="eyebrow">${escape(project.category)} / ${project.year}</span><h2 id="dialog-title">${escape(project.title)}</h2><p>${escape(project.description)}</p>${project.role ? `<dl class="project-role"><dt>ROLE</dt><dd>${escape(project.role)}</dd></dl>` : ''}${project.url && external(project.url) ? `<a class="outline-button" href="${escape(project.url)}" target="_blank" rel="noopener noreferrer">VISIT WEBSITE ${arrow}</a>` : '<span class="sample-label">CONCEPT PREVIEW · 샘플 프로젝트</span>'}</div>`
   openDialog(projectDialog)
   projectDialog.querySelectorAll('video').forEach(video => { video.muted = true; video.controls = true; if (!reducedMotion.matches) void video.play().catch(() => {}) })
 }))
