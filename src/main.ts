@@ -5,14 +5,16 @@ const escape = (value: string) => value.replace(/[&<>"']/g, char => ({ '&': '&am
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
 const external = (url: string) => /^https?:\/\//.test(url)
 const arrow = '<span aria-hidden="true">↗</span>'
-const art = (project: Project) => project.id === 'everylife'
+const art = (project: Project, livePreview = false) => project.id === 'glyfing' && livePreview && !matchMedia('(prefers-reduced-motion: reduce)').matches
+  ? `<div class="project-live-preview" inert><img class="project-preview-image" src="${escape(asset(project.image!))}" alt="" /><iframe src="${escape(project.url!)}" title="GLYFING 움직이는 3D 미리보기" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>`
+  : project.id === 'everylife'
   ? `<div class="everylife-cover"><img class="everylife-card-logo" src="${escape(asset('images/everylife-logo.svg'))}" alt="everylife" /></div>`
   : project.image
   ? `<img class="project-preview-image" src="${escape(asset(project.image))}" alt="${escape(project.title)} 웹사이트 미리보기" />`
   : project.video
   ? `<video class="project-video" src="${escape(asset(project.video))}" ${project.poster ? `poster="${escape(asset(project.poster))}"` : ''} ${matchMedia('(prefers-reduced-motion: reduce)').matches ? '' : 'autoplay'} muted loop playsinline preload="metadata" aria-label="${escape(project.title)} 미리보기"></video><span class="video-play">▶</span>`
   : `<div class="art art-${project.theme}" aria-hidden="true"><span class="art-mark">${project.theme === 'type' ? 'Aa' : project.theme === 'form' ? 'f.' : project.theme === 'still' ? 'STILL<br>LIFE' : project.theme === 'wave' ? 'after<br>hours.' : ''}</span><i class="object object-one"></i><i class="object object-two"></i><i class="object object-three"></i><span class="art-caption">${project.theme === 'orbit' ? 'A NEW PERSPECTIVE' : project.theme === 'amber' ? 'LIGHT, IN A DIFFERENT FORM.' : 'INDEPENDENT DIGITAL EXPLORATION'}</span></div>`
-const card = (project: Project, index: number) => `<button class="project-card" data-project="${project.id}" aria-label="${escape(project.title)} 프로젝트 보기">${art(project)}<span class="card-top"><span>${String(projects.length - index).padStart(2, '0')}</span></span><span class="card-bottom"><span class="card-title">${escape(project.title)}</span><span class="card-meta">${escape(project.category)} ${arrow}</span></span></button>`
+const card = (project: Project, index: number) => `<button class="project-card" data-project="${project.id}" aria-label="${escape(project.title)} 프로젝트 보기">${art(project, true)}<span class="card-top"><span>${String(projects.length - index).padStart(2, '0')}</span></span><span class="card-bottom"><span class="card-title">${escape(project.title)}</span><span class="card-meta">${escape(project.category)} ${arrow}</span></span></button>`
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 <header class="header" id="top"><div class="header-brand"><a class="wordmark" href="#top">wanseo jo<span class="wordmark-sub">WEB ARCHIVE</span></a></div><nav aria-label="주 메뉴"><details class="skill-menu"><summary>SKILL</summary><ul class="skill-list"><li>adobe illustrator</li><li>adobe photoshop</li><li>figma</li><li>AI</li><li>python</li><li>java</li><li>c++</li></ul></details><details class="skill-menu contact-menu"><summary>CONTACT</summary><ul class="skill-list"><li><a href="mailto:${escape(profile.email)}">${escape(profile.email)}</a></li></ul></details></nav></header>
