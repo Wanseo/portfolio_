@@ -22,6 +22,6 @@ export const profile = {
 
 // 새 작업은 배열 맨 앞에 추가하세요. 최신 작업이 왼쪽부터 표시됩니다.
 export const projects: Project[] = [
-  { id: 'guestbook', title: 'GUESTBOOK', category: 'development, design', year: '2026', theme: 'form', description: '픽셀 그래픽과 움직이는 배경으로 만든 작은 방명록입니다.', role: 'Planning, Design, Development', url: 'https://wanseo.github.io/myfirstweb/', video: 'videos/guestbook.mp4', poster: 'videos/guestbook.jpg' },
+  { id: 'guestbook', title: 'GUESTBOOK', category: 'development, graphic design', year: '2026', theme: 'form', description: '픽셀 그래픽과 움직이는 배경으로 만든 작은 방명록입니다.', role: 'Planning, Design, Development', url: 'https://wanseo.github.io/myfirstweb/', video: 'videos/guestbook.mp4', poster: 'videos/guestbook.jpg' },
   { id: 'everylife', title: 'EVERYLIFE', category: 'merch graphic design', year: '', theme: 'everylife', description: '캐릭터 일러스트와 부드러운 컬러, 세리프 로고를 함께 전개한 everylife 굿즈 디자인입니다.', role: 'Graphic Design, Illustration', image: 'images/everylife-design-board.png' },
 ]
