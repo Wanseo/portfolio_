@@ -26,7 +26,6 @@ const everylifeDetail = (project: Project) => `
     <header class="goods-hero">
       <span class="eyebrow">GOODS & GRAPHIC DESIGN / SELECTED WORK</span>
       <h2 id="dialog-title"><img class="goods-hero-logo" src="${escape(asset('images/everylife-logo.svg'))}" alt="everylife" /></h2>
-      <p>작은 굿즈에 담은,<br>다채로운 일상의 얼굴.</p>
       <div class="goods-hero-bottom"><span>CHARACTER & VISUAL IDENTITY</span><span>SCROLL TO EXPLORE ↓</span></div>
     </header>
     <section class="goods-section goods-overview">
