@@ -5,8 +5,10 @@ const escape = (value: string) => value.replace(/[&<>"']/g, char => ({ '&': '&am
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
 const external = (url: string) => /^https?:\/\//.test(url)
 const arrow = '<span aria-hidden="true">↗</span>'
-const art = (project: Project) => project.image
+const art = (project: Project) => project.id === 'everylife'
   ? `<div class="everylife-cover"><img class="everylife-card-logo" src="${escape(asset('images/everylife-logo.svg'))}" alt="everylife" /></div>`
+  : project.image
+  ? `<img class="project-preview-image" src="${escape(asset(project.image))}" alt="${escape(project.title)} 웹사이트 미리보기" />`
   : project.video
   ? `<video class="project-video" src="${escape(asset(project.video))}" ${project.poster ? `poster="${escape(asset(project.poster))}"` : ''} ${matchMedia('(prefers-reduced-motion: reduce)').matches ? '' : 'autoplay'} muted loop playsinline preload="metadata" aria-label="${escape(project.title)} 미리보기"></video><span class="video-play">▶</span>`
   : `<div class="art art-${project.theme}" aria-hidden="true"><span class="art-mark">${project.theme === 'type' ? 'Aa' : project.theme === 'form' ? 'f.' : project.theme === 'still' ? 'STILL<br>LIFE' : project.theme === 'wave' ? 'after<br>hours.' : ''}</span><i class="object object-one"></i><i class="object object-two"></i><i class="object object-three"></i><span class="art-caption">${project.theme === 'orbit' ? 'A NEW PERSPECTIVE' : project.theme === 'amber' ? 'LIGHT, IN A DIFFERENT FORM.' : 'INDEPENDENT DIGITAL EXPLORATION'}</span></div>`
