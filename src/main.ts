@@ -8,7 +8,7 @@ const arrow = '<span aria-hidden="true">↗</span>'
 const art = (project: Project, livePreview = false) => project.id === 'glyfing' && livePreview && !matchMedia('(prefers-reduced-motion: reduce)').matches
   ? `<div class="project-live-preview" inert><img class="project-preview-image" src="${escape(asset(project.image!))}" alt="" /><iframe src="${escape(project.url!)}" title="GLYFING 움직이는 3D 미리보기" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>`
   : project.id === 'everylife'
-  ? `<div class="everylife-cover"><img class="everylife-card-logo" src="${escape(asset('images/everylife-logo.svg'))}" alt="everylife" /></div>`
+  ? `<div class="everylife-cover"><img class="everylife-card-logo" src="${escape(asset('images/everylife-logo.svg'))}" alt="everylife" /><svg class="everylife-card-stickers" viewBox="0 1250 5750 2719" role="img" aria-label="everylife 캐릭터와 원형 스티커"><defs><filter id="sticker-cutout" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -1 -1 -1 0 3"/><feComponentTransfer><feFuncA type="linear" slope="18"/></feComponentTransfer></filter></defs><image href="${escape(asset('images/everylife-design-board.png'))}" width="7861" height="3969" filter="url(#sticker-cutout)" /></svg></div>`
   : project.image
   ? `<img class="project-preview-image" src="${escape(asset(project.image))}" alt="${escape(project.title)} 웹사이트 미리보기" />`
   : project.video
