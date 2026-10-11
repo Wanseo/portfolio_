@@ -43,7 +43,7 @@ const everylifeDetail = (project: Project) => `
       <a class="goods-board-link" href="${escape(asset(project.image!))}" target="_blank" rel="noopener noreferrer" aria-label="everylife 디자인 원본 크게 보기"><img class="goods-board" src="${escape(asset(project.image!))}" alt="네 가지 캐릭터, 패키지 그래픽, 다섯 가지 원형 스티커와 로고 컬러 조합" loading="lazy"/><span>DESIGN BOARD · 원본 크게 보기 ↗</span></a>
     </section>
     <section class="goods-section"><div class="goods-section-heading"><span class="goods-index">03 / COLOR & TYPE</span><h3>부드러운 색, 선명한 개성</h3></div>
-      <div class="goods-palette">${[['Rose','#DEBBBB'],['Sky','#B3D1DE'],['Mauve','#7C7286'],['Blush','#E1D5D7'],['Mint','#DBE9E5']].map(([name,color]) => `<div><i style="background:${color}"></i><span>${name}</span><small>${color}</small></div>`).join('')}</div>
+      <div class="goods-palette">${[['Rose','#DEBBBB'],['Sky','#B3D1DE'],['Mauve','#777083'],['Blush','#E1D5D7'],['Mint','#DBE9E5']].map(([name,color]) => `<div><i style="background:${color}"></i><span>${name}</span><small>${color}</small></div>`).join('')}</div>
       <div class="goods-type"><span>everylife</span><p>캐릭터의 자유로운 선과 대비되는<br>차분한 세리프 로고.</p></div>
     </section>
     <section class="goods-section goods-notes"><span class="goods-index">04 / DESIGN NOTES</span><div><h3>캐릭터에서 굿즈까지</h3><p>캐릭터의 뒷모습과 원형 로고를 결합해 시리즈의 통일감을 만들고, 컬러 변주로 각 디자인의 개성을 살렸습니다. 원형과 직사각형으로 확장한 로고 그래픽은 다양한 굿즈에 적용할 수 있도록 구성했습니다.</p></div></section>

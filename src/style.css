@@ -75,7 +75,7 @@ footer{border-top:0}
 }
 
 /* everylife goods case study */
-.everylife-cover,.goods-case{--everylife-purple:#7c7286;--everylife-on-purple:#faf8fc}
+.everylife-cover,.goods-case{--everylife-purple:#777083;--everylife-on-purple:#faf8fc}
 .everylife-cover{--everylife-purple:#777083;position:absolute;inset:0;background:var(--everylife-purple);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6% 6% 21%;color:var(--everylife-on-purple);overflow:hidden}
 .everylife-cover-kicker{font-size:clamp(6px,.65vw,10px);letter-spacing:.18em}
 .everylife-cover .everylife-card-logo{width:49%;height:auto;flex-shrink:0;margin:0 0 12%;object-fit:contain;filter:brightness(0) invert(1)}
