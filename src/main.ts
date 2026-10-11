@@ -6,7 +6,7 @@ const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+
 const external = (url: string) => /^https?:\/\//.test(url)
 const arrow = '<span aria-hidden="true">↗</span>'
 const art = (project: Project, livePreview = false) => project.id === 'potential' && livePreview
-  ? `<div class="project-live-preview potential-live-preview"><video class="potential-preview-video" src="${escape(asset('videos/potential.mp4?v=4'))}" poster="${escape(asset('videos/potential.jpg?v=2'))}" muted loop playsinline preload="auto" aria-label="POTENTIAL 로고와 웹사이트 미리보기"></video></div>`
+  ? `<div class="project-live-preview potential-live-preview"><video class="potential-preview-video" src="${escape(asset('videos/potential.mp4?v=5'))}" poster="${escape(asset('videos/potential.jpg?v=2'))}" muted loop playsinline preload="auto" aria-label="POTENTIAL 로고와 웹사이트 미리보기"></video></div>`
   : project.id === 'glyfing' && livePreview && !matchMedia('(prefers-reduced-motion: reduce)').matches
   ? `<div class="project-live-preview" inert><iframe class="preview-ready" data-live-preview="glyfing" data-preview-url="${escape(asset('previews/glyfing/index.html?v=4'))}" src="${escape(asset('previews/glyfing/index.html?v=4'))}" title="GLYFING 움직이는 3D 미리보기" loading="eager" tabindex="-1" aria-hidden="true"></iframe></div>`
   : project.id === 'everylife'
