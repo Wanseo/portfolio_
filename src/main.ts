@@ -6,9 +6,9 @@ const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+
 const external = (url: string) => /^https?:\/\//.test(url)
 const arrow = '<span aria-hidden="true">↗</span>'
 const art = (project: Project, livePreview = false) => project.id === 'potential' && livePreview && !matchMedia('(prefers-reduced-motion: reduce)').matches
-  ? `<div class="project-live-preview potential-live-preview" inert><img class="project-preview-image" src="${escape(asset(project.image!))}" alt="" /><iframe data-potential-preview="${escape(project.url!)}" title="POTENTIAL 로딩 및 회전 로고 미리보기" tabindex="-1" aria-hidden="true"></iframe></div>`
+  ? `<div class="project-live-preview potential-live-preview" inert><img class="project-preview-image" src="${escape(asset(project.image!))}" alt="" /><iframe data-live-preview="potential" data-potential-preview="${escape(project.url!)}" title="POTENTIAL 로딩 및 회전 로고 미리보기" tabindex="-1" aria-hidden="true"></iframe></div>`
   : project.id === 'glyfing' && livePreview && !matchMedia('(prefers-reduced-motion: reduce)').matches
-  ? `<div class="project-live-preview" inert><img class="project-preview-image" src="${escape(asset(project.image!))}" alt="" /><iframe src="${escape(asset('previews/glyfing/index.html?v=3'))}" title="GLYFING 움직이는 3D 미리보기" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>`
+  ? `<div class="project-live-preview" inert><img class="project-preview-image" src="${escape(asset(project.image!))}" alt="" /><iframe data-live-preview="glyfing" data-preview-url="${escape(asset('previews/glyfing/index.html?v=3'))}" title="GLYFING 움직이는 3D 미리보기" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>`
   : project.id === 'everylife'
   ? `<div class="everylife-cover"><img class="everylife-card-logo" src="${escape(asset('images/everylife-logo.svg'))}" alt="everylife" /><div class="everylife-card-stickers"><svg viewBox="195 0 1335 235" role="img" aria-label="everylife 기저귀 패키지"><image href="${escape(asset('images/everylife-stickers.png'))}" width="1765" height="891" /></svg><svg viewBox="195 240 1335 432" role="img" aria-label="everylife 아기 캐릭터"><image href="${escape(asset('images/everylife-stickers.png'))}" width="1765" height="891" /></svg><svg viewBox="250 672 1275 219" role="img" aria-label="everylife 원형 스탬프"><image href="${escape(asset('images/everylife-stickers.png'))}" width="1765" height="891" /></svg></div></div>`
   : project.image
@@ -76,6 +76,33 @@ const previewSizeObserver = new ResizeObserver(entries => {
 })
 document.querySelectorAll('.potential-live-preview').forEach(preview => previewSizeObserver.observe(preview))
 
+const previewQueue = new Set<HTMLIFrameElement>()
+let loadingPreview = false
+async function loadNextPreview() {
+  if (loadingPreview || document.hidden || reducedMotion.matches) return
+  const frame = [...previewQueue].find(item => item.closest('.project-card')?.classList.contains('in-view'))
+  if (!frame) return
+  previewQueue.delete(frame)
+  if (frame.getAttribute('src')) { void loadNextPreview(); return }
+  loadingPreview = true
+  await new Promise<void>(resolve => {
+    const timeout = window.setTimeout(resolve, 10000)
+    frame.addEventListener('load', () => { clearTimeout(timeout); window.setTimeout(resolve, 350) }, { once: true })
+    frame.src = frame.dataset.previewUrl ?? frame.dataset.potentialPreview!
+  })
+  loadingPreview = false
+  window.setTimeout(() => void loadNextPreview(), 400)
+}
+function queuePreview(frame: HTMLIFrameElement) {
+  previewQueue.add(frame)
+  window.setTimeout(() => void loadNextPreview(), 500)
+}
+document.querySelectorAll<HTMLIFrameElement>('[data-live-preview]').forEach(frame => {
+  frame.addEventListener('load', () => {
+    if (frame.getAttribute('src')) window.setTimeout(() => frame.classList.add('preview-ready'), 150)
+  })
+})
+
 const potentialTimers = new Map<HTMLIFrameElement, number>()
 document.querySelectorAll<HTMLIFrameElement>('[data-potential-preview]').forEach(frame => {
   frame.addEventListener('load', () => {
@@ -104,21 +131,25 @@ document.addEventListener('visibilitychange', () => {
     if (timer) clearTimeout(timer)
     potentialTimers.delete(frame)
     if (!document.hidden && frame.closest('.project-card')?.classList.contains('in-view') && !reducedMotion.matches) {
-      frame.src = frame.dataset.potentialPreview!
+      frame.removeAttribute('src')
+      queuePreview(frame)
     }
   })
+  void loadNextPreview()
 })
 
 const observer = new IntersectionObserver(entries => entries.forEach(entry => {
   entry.target.classList.toggle('in-view', entry.isIntersecting)
-  const preview = entry.target.querySelector<HTMLIFrameElement>('[data-potential-preview]')
+  const preview = entry.target.querySelector<HTMLIFrameElement>('[data-live-preview]')
   if (preview) {
     if (entry.isIntersecting && !reducedMotion.matches) {
-      if (!preview.getAttribute('src')) preview.src = preview.dataset.potentialPreview!
+      if (!preview.getAttribute('src')) queuePreview(preview)
     } else {
       const timer = potentialTimers.get(preview)
       if (timer) clearTimeout(timer)
       potentialTimers.delete(preview)
+      previewQueue.delete(preview)
+      preview.classList.remove('preview-ready')
       preview.removeAttribute('src')
     }
   }
