@@ -127,7 +127,7 @@ footer{border-top:0}
 .everylife-card-stickers svg{display:block;width:100%;height:auto;overflow:hidden;flex-shrink:0}
 
 .potential-live-preview{inset:50% 0 auto;height:auto;aspect-ratio:16/10;background:#fff;transform:translateY(-50%)}
-.potential-live-preview iframe{width:1440px;height:900px;transform-origin:top left}
+.potential-preview-video{display:block;width:100%;height:100%;object-fit:contain}
 .project-card[data-project="potential"]{background:#fff}
 .project-card[data-project="potential"] .card-top{color:#20201e}
 

@@ -5,8 +5,8 @@ const escape = (value: string) => value.replace(/[&<>"']/g, char => ({ '&': '&am
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
 const external = (url: string) => /^https?:\/\//.test(url)
 const arrow = '<span aria-hidden="true">↗</span>'
-const art = (project: Project, livePreview = false) => project.id === 'potential' && livePreview && !matchMedia('(prefers-reduced-motion: reduce)').matches
-  ? `<div class="project-live-preview potential-live-preview" inert><iframe class="preview-ready" data-live-preview="potential" data-potential-preview="${escape(asset('previews/potential/index.html'))}" src="${escape(asset('previews/potential/index.html'))}" title="POTENTIAL 로딩 및 회전 로고 미리보기" loading="eager" tabindex="-1" aria-hidden="true"></iframe></div>`
+const art = (project: Project, livePreview = false) => project.id === 'potential' && livePreview
+  ? `<div class="project-live-preview potential-live-preview"><video class="potential-preview-video" src="${escape(asset('videos/potential.mp4'))}" poster="${escape(asset('videos/potential.jpg'))}" muted loop playsinline preload="auto" aria-label="POTENTIAL 로고와 웹사이트 미리보기"></video></div>`
   : project.id === 'glyfing' && livePreview && !matchMedia('(prefers-reduced-motion: reduce)').matches
   ? `<div class="project-live-preview" inert><iframe class="preview-ready" data-live-preview="glyfing" data-preview-url="${escape(asset('previews/glyfing/index.html?v=4'))}" src="${escape(asset('previews/glyfing/index.html?v=4'))}" title="GLYFING 움직이는 3D 미리보기" loading="eager" tabindex="-1" aria-hidden="true"></iframe></div>`
   : project.id === 'everylife'
@@ -68,14 +68,6 @@ document.querySelectorAll<HTMLButtonElement>('[data-project]').forEach(button =>
 }))
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)')
 
-const previewSizeObserver = new ResizeObserver(entries => {
-  entries.forEach(entry => {
-    const frame = entry.target.querySelector<HTMLIFrameElement>('iframe')
-    if (frame) frame.style.transform = `scale(${entry.contentRect.width / 1440})`
-  })
-})
-document.querySelectorAll('.potential-live-preview').forEach(preview => previewSizeObserver.observe(preview))
-
 const previewQueue = new Set<HTMLIFrameElement>()
 let loadingPreview = false
 async function loadNextPreview() {
@@ -88,7 +80,7 @@ async function loadNextPreview() {
   await new Promise<void>(resolve => {
     const timeout = window.setTimeout(resolve, 10000)
     frame.addEventListener('load', () => { clearTimeout(timeout); window.setTimeout(resolve, 350) }, { once: true })
-    frame.src = frame.dataset.previewUrl ?? frame.dataset.potentialPreview!
+    frame.src = frame.dataset.previewUrl!
   })
   loadingPreview = false
   window.setTimeout(() => void loadNextPreview(), 400)
@@ -103,40 +95,7 @@ document.querySelectorAll<HTMLIFrameElement>('[data-live-preview]').forEach(fram
   })
 })
 
-const potentialTimers = new Map<HTMLIFrameElement, number>()
-document.querySelectorAll<HTMLIFrameElement>('[data-potential-preview]').forEach(frame => {
-  frame.addEventListener('load', () => {
-    if (!frame.getAttribute('src')) return
-    const previous = potentialTimers.get(frame)
-    if (previous) clearTimeout(previous)
-    try {
-      const previewDocument = frame.contentDocument
-      if (previewDocument) {
-        const style = previewDocument.createElement('style')
-        style.textContent = '.site-footer,footer{visibility:hidden!important}'
-        previewDocument.head.appendChild(style)
-      }
-    } catch { /* Cross-origin local previews cannot alter the embedded site. */ }
-    potentialTimers.set(frame, window.setTimeout(() => {
-      if (frame.closest('.project-card')?.classList.contains('in-view') && !document.hidden) {
-        frame.src = frame.dataset.potentialPreview!
-      }
-    }, 7500))
-  })
-})
-
-document.addEventListener('visibilitychange', () => {
-  document.querySelectorAll<HTMLIFrameElement>('[data-potential-preview]').forEach(frame => {
-    const timer = potentialTimers.get(frame)
-    if (timer) clearTimeout(timer)
-    potentialTimers.delete(frame)
-    if (!document.hidden && frame.closest('.project-card')?.classList.contains('in-view') && !reducedMotion.matches) {
-      frame.removeAttribute('src')
-      queuePreview(frame)
-    }
-  })
-  void loadNextPreview()
-})
+document.addEventListener('visibilitychange', () => { if (!document.hidden) void loadNextPreview() })
 
 const observer = new IntersectionObserver(entries => entries.forEach(entry => {
   entry.target.classList.toggle('in-view', entry.isIntersecting)
@@ -145,9 +104,6 @@ const observer = new IntersectionObserver(entries => entries.forEach(entry => {
     if (entry.isIntersecting && !reducedMotion.matches) {
       if (!preview.getAttribute('src')) queuePreview(preview)
     } else {
-      const timer = potentialTimers.get(preview)
-      if (timer) clearTimeout(timer)
-      potentialTimers.delete(preview)
       previewQueue.delete(preview)
       preview.classList.remove('preview-ready')
       preview.removeAttribute('src')
