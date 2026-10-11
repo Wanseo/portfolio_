@@ -5,10 +5,12 @@ const escape = (value: string) => value.replace(/[&<>"']/g, char => ({ '&': '&am
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
 const external = (url: string) => /^https?:\/\//.test(url)
 const arrow = '<span aria-hidden="true">↗</span>'
-const art = (project: Project) => project.video
+const art = (project: Project) => project.image
+  ? `<div class="everylife-cover"><span class="everylife-cover-kicker">LITTLE THINGS, EVERY DAY.</span><span class="everylife-logo">everylife</span><img src="${escape(asset(project.image))}" alt="everylife 캐릭터와 스티커 디자인 보드" /><span class="everylife-cover-note">CHARACTERS · COLORS · GOODS</span></div>`
+  : project.video
   ? `<video class="project-video" src="${escape(asset(project.video))}" ${project.poster ? `poster="${escape(asset(project.poster))}"` : ''} ${matchMedia('(prefers-reduced-motion: reduce)').matches ? '' : 'autoplay'} muted loop playsinline preload="metadata" aria-label="${escape(project.title)} 미리보기"></video><span class="video-play">▶</span>`
   : `<div class="art art-${project.theme}" aria-hidden="true"><span class="art-mark">${project.theme === 'type' ? 'Aa' : project.theme === 'form' ? 'f.' : project.theme === 'still' ? 'STILL<br>LIFE' : project.theme === 'wave' ? 'after<br>hours.' : ''}</span><i class="object object-one"></i><i class="object object-two"></i><i class="object object-three"></i><span class="art-caption">${project.theme === 'orbit' ? 'A NEW PERSPECTIVE' : project.theme === 'amber' ? 'LIGHT, IN A DIFFERENT FORM.' : 'INDEPENDENT DIGITAL EXPLORATION'}</span></div>`
-const card = (project: Project, index: number) => `<button class="project-card" data-project="${project.id}" aria-label="${escape(project.title)} 프로젝트 보기">${art(project)}<span class="card-top"><span>${String(index + 1).padStart(2, '0')}</span><span>${project.video ? 'MOTION' : 'DEMO'} <span class="live-dot"></span></span></span><span class="card-bottom"><span class="card-title">${escape(project.title)}</span><span class="card-meta">${escape(project.category)} ${arrow}</span></span></button>`
+const card = (project: Project, index: number) => `<button class="project-card" data-project="${project.id}" aria-label="${escape(project.title)} 프로젝트 보기">${art(project)}<span class="card-top"><span>${String(index + 1).padStart(2, '0')}</span><span>${project.image ? 'DESIGN' : project.video ? 'MOTION' : 'DEMO'} <span class="live-dot"></span></span></span><span class="card-bottom"><span class="card-title">${escape(project.title)}</span><span class="card-meta">${escape(project.category)} ${arrow}</span></span></button>`
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 <header class="header" id="top"><div class="header-brand"><a class="wordmark" href="#top">wanseo jo<span class="wordmark-sub">WEB ARCHIVE</span></a></div><nav aria-label="주 메뉴"><details class="skill-menu"><summary>SKILL</summary><ul class="skill-list"><li>adobe illustrator</li><li>adobe photoshop</li><li>figma</li><li>AI</li><li>python</li><li>java</li><li>c++</li></ul></details><details class="skill-menu contact-menu"><summary>CONTACT</summary><ul class="skill-list"><li><a href="mailto:${escape(profile.email)}">${escape(profile.email)}</a></li></ul></details></nav></header>
@@ -17,6 +19,31 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 <footer><div class="footer-bottom"><span>© ${new Date().getFullYear()} wanseo jo</span><span>Seoul, Korea</span></div></footer>
 <dialog id="project-dialog" aria-labelledby="dialog-title"><button class="close-button" aria-label="닫기">×</button><div id="dialog-content"></div></dialog>
 `
+
+
+const everylifeDetail = (project: Project) => `
+  <article class="goods-case">
+    <header class="goods-hero">
+      <span class="eyebrow">GOODS & GRAPHIC DESIGN / SELECTED WORK</span>
+      <h2 id="dialog-title">everylife</h2>
+      <p>작은 굿즈에 담은,<br>다채로운 일상의 얼굴.</p>
+      <div class="goods-hero-bottom"><span>CHARACTER & VISUAL IDENTITY</span><span>SCROLL TO EXPLORE ↓</span></div>
+    </header>
+    <section class="goods-section goods-overview">
+      <span class="goods-index">01 / OVERVIEW</span>
+      <div><h3>일상 가까이에 두는 디자인</h3><p>${escape(project.description)}</p><p>서로 다른 헤어스타일과 피부색의 캐릭터, 다섯 가지 파스텔 컬러, 간결한 로고를 하나의 시각 언어로 연결했습니다.</p>
+      <dl class="goods-facts"><div><dt>ROLE</dt><dd>${escape(project.role ?? '')}</dd></div><div><dt>OUTPUT</dt><dd>Character Illustration, Sticker Graphics</dd></div></dl></div>
+    </section>
+    <section class="goods-section"><div class="goods-section-heading"><span class="goods-index">02 / DESIGN BOARD</span><h3>하나의 브랜드, 다양한 표정</h3></div>
+      <a class="goods-board-link" href="${escape(asset(project.image!))}" target="_blank" rel="noopener noreferrer" aria-label="everylife 디자인 원본 크게 보기"><img class="goods-board" src="${escape(asset(project.image!))}" alt="네 가지 캐릭터, 패키지 그래픽, 다섯 가지 원형 스티커와 로고 컬러 조합" loading="lazy"/><span>DESIGN BOARD · 원본 크게 보기 ↗</span></a>
+    </section>
+    <section class="goods-section"><div class="goods-section-heading"><span class="goods-index">03 / COLOR & TYPE</span><h3>부드러운 색, 선명한 개성</h3></div>
+      <div class="goods-palette">${[['Rose','#DEBBBB'],['Sky','#B3D1DE'],['Mauve','#72687E'],['Blush','#E1D5D7'],['Mint','#DBE9E5']].map(([name,color]) => `<div><i style="background:${color}"></i><span>${name}</span><small>${color}</small></div>`).join('')}</div>
+      <div class="goods-type"><span>everylife</span><p>캐릭터의 자유로운 선과 대비되는<br>차분한 세리프 로고.</p></div>
+    </section>
+    <section class="goods-section goods-notes"><span class="goods-index">04 / DESIGN NOTES</span><div><h3>캐릭터에서 굿즈까지</h3><p>캐릭터의 뒷모습과 원형 로고를 결합해 시리즈의 통일감을 만들고, 컬러 변주로 각 디자인의 개성을 살렸습니다. 원형과 직사각형으로 확장한 로고 그래픽은 다양한 굿즈에 적용할 수 있도록 구성했습니다.</p></div></section>
+    <footer class="goods-end"><span>everylife</span><span>GOODS DESIGN · WANSEO JO</span></footer>
+  </article>`
 
 const projectDialog = document.querySelector<HTMLDialogElement>('#project-dialog')!
 function openDialog(dialog: HTMLDialogElement) { dialog.showModal(); document.body.classList.add('modal-open') }
@@ -28,8 +55,10 @@ for (const dialog of [projectDialog]) {
 }
 document.querySelectorAll<HTMLButtonElement>('[data-project]').forEach(button => button.addEventListener('click', () => {
   const project = projects.find(item => item.id === button.dataset.project)!
-  document.querySelector('#dialog-content')!.innerHTML = `<div class="dialog-art">${art(project)}</div><div class="dialog-copy"><span class="eyebrow">${escape(project.category)} / ${project.year}</span><h2 id="dialog-title">${escape(project.title)}</h2><p>${escape(project.description)}</p>${project.role ? `<dl class="project-role"><dt>ROLE</dt><dd>${escape(project.role)}</dd></dl>` : ''}${project.url && external(project.url) ? `<a class="outline-button" href="${escape(project.url)}" target="_blank" rel="noopener noreferrer">VISIT WEBSITE ${arrow}</a>` : '<span class="sample-label">CONCEPT PREVIEW · 샘플 프로젝트</span>'}</div>`
+  projectDialog.classList.toggle('goods-dialog', project.id === 'everylife')
+  document.querySelector('#dialog-content')!.innerHTML = project.id === 'everylife' ? everylifeDetail(project) : `<div class="dialog-art">${art(project)}</div><div class="dialog-copy"><span class="eyebrow">${escape(project.category)} / ${project.year}</span><h2 id="dialog-title">${escape(project.title)}</h2><p>${escape(project.description)}</p>${project.role ? `<dl class="project-role"><dt>ROLE</dt><dd>${escape(project.role)}</dd></dl>` : ''}${project.url && external(project.url) ? `<a class="outline-button" href="${escape(project.url)}" target="_blank" rel="noopener noreferrer">VISIT WEBSITE ${arrow}</a>` : '<span class="sample-label">CONCEPT PREVIEW · 샘플 프로젝트</span>'}</div>`
   openDialog(projectDialog)
+  projectDialog.scrollTop = 0
   projectDialog.querySelectorAll('video').forEach(video => { video.muted = true; video.controls = true; if (!reducedMotion.matches) void video.play().catch(() => {}) })
 }))
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)')
