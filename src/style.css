@@ -116,5 +116,3 @@ footer{border-top:0}
 @media(max-width:600px){.everylife-cover-kicker,.everylife-cover-note{font-size:6px}.goods-hero{padding-top:65px}.goods-hero h2{margin-top:40px}.goods-hero-bottom{margin-top:40px;font-size:7px}.goods-section{padding:32px 7%}.goods-overview,.goods-notes{grid-template-columns:1fr;gap:20px}.goods-section-heading{display:block}.goods-section-heading h3{margin-top:16px}.goods-board-link{padding:12px}.goods-palette{gap:8px}.goods-palette span{font-size:9px}.goods-palette small{font-size:7px}.goods-type{display:block;padding:24px}.goods-type p{margin-top:16px}.goods-end>span:last-child{font-size:7px}}
 
 .goods-hero-logo{display:block;width:min(75%,400px);height:auto;filter:brightness(0) invert(1)}
-
-.everylife-project-card::after{display:none}
