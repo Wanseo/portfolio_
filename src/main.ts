@@ -68,19 +68,20 @@ document.querySelectorAll<HTMLButtonElement>('[data-project]').forEach(button =>
 }))
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)')
 
+const previewSizeObserver = new ResizeObserver(entries => {
+  entries.forEach(entry => {
+    const frame = entry.target.querySelector<HTMLIFrameElement>('iframe')
+    if (frame) frame.style.transform = `scale(${entry.contentRect.width / 1440})`
+  })
+})
+document.querySelectorAll('.potential-live-preview').forEach(preview => previewSizeObserver.observe(preview))
+
 const potentialTimers = new Map<HTMLIFrameElement, number>()
 document.querySelectorAll<HTMLIFrameElement>('[data-potential-preview]').forEach(frame => {
   frame.addEventListener('load', () => {
     if (!frame.getAttribute('src')) return
     const previous = potentialTimers.get(frame)
     if (previous) clearTimeout(previous)
-    // Both sites share the same origin; adjust only the embedded preview.
-    const previewDocument = frame.contentDocument
-    if (previewDocument) {
-      const style = previewDocument.createElement('style')
-      style.textContent = '.rotating-logo{bottom:23%!important;right:6%!important;width:20%!important;max-width:112px;height:auto!important}'
-      previewDocument.head.appendChild(style)
-    }
     potentialTimers.set(frame, window.setTimeout(() => {
       if (frame.closest('.project-card')?.classList.contains('in-view') && !document.hidden) {
         frame.src = frame.dataset.potentialPreview!
