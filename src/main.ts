@@ -6,7 +6,7 @@ const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+
 const external = (url: string) => /^https?:\/\//.test(url)
 const arrow = '<span aria-hidden="true">↗</span>'
 const art = (project: Project, livePreview = false) => project.id === 'glyfing' && livePreview && !matchMedia('(prefers-reduced-motion: reduce)').matches
-  ? `<div class="project-live-preview" inert><img class="project-preview-image" src="${escape(asset(project.image!))}" alt="" /><iframe src="${escape(project.url!)}" title="GLYFING 움직이는 3D 미리보기" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>`
+  ? `<div class="project-live-preview" inert><img class="project-preview-image" src="${escape(asset(project.image!))}" alt="" /><iframe src="${escape(asset('previews/glyfing/index.html'))}" title="GLYFING 움직이는 3D 미리보기" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>`
   : project.id === 'everylife'
   ? `<div class="everylife-cover"><img class="everylife-card-logo" src="${escape(asset('images/everylife-logo.svg'))}" alt="everylife" /><div class="everylife-card-stickers"><svg viewBox="195 0 1335 235" role="img" aria-label="everylife 기저귀 패키지"><image href="${escape(asset('images/everylife-stickers.png'))}" width="1765" height="891" /></svg><svg viewBox="195 240 1335 432" role="img" aria-label="everylife 아기 캐릭터"><image href="${escape(asset('images/everylife-stickers.png'))}" width="1765" height="891" /></svg><svg viewBox="250 672 1275 219" role="img" aria-label="everylife 원형 스탬프"><image href="${escape(asset('images/everylife-stickers.png'))}" width="1765" height="891" /></svg></div></div>`
   : project.image
