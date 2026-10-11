@@ -78,7 +78,7 @@ footer{border-top:0}
 .everylife-cover,.goods-case{--everylife-purple:#7c7286;--everylife-on-purple:#faf8fc}
 .everylife-cover{position:absolute;inset:0;background:var(--everylife-purple);display:flex;flex-direction:column;align-items:center;padding:7% 6%;color:var(--everylife-on-purple);overflow:hidden}
 .everylife-cover-kicker{font-size:clamp(6px,.65vw,10px);letter-spacing:.18em}
-.everylife-cover .everylife-card-logo{width:52%;height:auto;flex-shrink:0;margin:3% 0 5%;object-fit:contain;filter:brightness(0) invert(1)}
+.everylife-cover .everylife-card-logo{width:49%;height:auto;flex-shrink:0;margin:3% 0 8%;object-fit:contain;filter:brightness(0) invert(1)}
 .everylife-cover .everylife-card-board{width:100%;height:44%;object-fit:contain;transition:transform .5s}
 .project-card:hover .everylife-cover .everylife-card-board{transform:scale(1.05)}
 .everylife-cover-note{margin-top:5%;font-size:clamp(6px,.6vw,9px);letter-spacing:.15em}
@@ -123,7 +123,7 @@ footer{border-top:0}
 .project-live-preview{position:absolute;inset:0;pointer-events:none;overflow:hidden;background:#e83796}
 .project-live-preview iframe{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none}
 
-.everylife-card-stickers{display:flex;flex-direction:column;gap:clamp(7px,1vw,15px);width:76%;flex-shrink:0}
+.everylife-card-stickers{display:flex;flex-direction:column;gap:clamp(7px,1vw,15px);width:72%;flex-shrink:0}
 .everylife-card-stickers svg{display:block;width:100%;height:auto;overflow:hidden;flex-shrink:0}
 
 .potential-live-preview{inset:6% -6% auto;height:auto;aspect-ratio:16/10;background:#fff}
