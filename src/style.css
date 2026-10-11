@@ -125,3 +125,5 @@ footer{border-top:0}
 
 .everylife-card-stickers{display:flex;flex-direction:column;gap:clamp(8px,1.2vw,18px);width:90%;flex-shrink:0}
 .everylife-card-stickers svg{display:block;width:100%;height:auto;overflow:hidden;flex-shrink:0}
+
+.potential-live-preview{background:#fff}

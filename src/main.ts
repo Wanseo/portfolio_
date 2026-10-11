@@ -5,7 +5,9 @@ const escape = (value: string) => value.replace(/[&<>"']/g, char => ({ '&': '&am
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
 const external = (url: string) => /^https?:\/\//.test(url)
 const arrow = '<span aria-hidden="true">↗</span>'
-const art = (project: Project, livePreview = false) => project.id === 'glyfing' && livePreview && !matchMedia('(prefers-reduced-motion: reduce)').matches
+const art = (project: Project, livePreview = false) => project.id === 'potential' && livePreview && !matchMedia('(prefers-reduced-motion: reduce)').matches
+  ? `<div class="project-live-preview potential-live-preview" inert><img class="project-preview-image" src="${escape(asset(project.image!))}" alt="" /><iframe data-potential-preview="${escape(project.url!)}" title="POTENTIAL 로딩 및 회전 로고 미리보기" tabindex="-1" aria-hidden="true"></iframe></div>`
+  : project.id === 'glyfing' && livePreview && !matchMedia('(prefers-reduced-motion: reduce)').matches
   ? `<div class="project-live-preview" inert><img class="project-preview-image" src="${escape(asset(project.image!))}" alt="" /><iframe src="${escape(asset('previews/glyfing/index.html'))}" title="GLYFING 움직이는 3D 미리보기" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>`
   : project.id === 'everylife'
   ? `<div class="everylife-cover"><img class="everylife-card-logo" src="${escape(asset('images/everylife-logo.svg'))}" alt="everylife" /><div class="everylife-card-stickers"><svg viewBox="195 0 1335 235" role="img" aria-label="everylife 기저귀 패키지"><image href="${escape(asset('images/everylife-stickers.png'))}" width="1765" height="891" /></svg><svg viewBox="195 240 1335 432" role="img" aria-label="everylife 아기 캐릭터"><image href="${escape(asset('images/everylife-stickers.png'))}" width="1765" height="891" /></svg><svg viewBox="250 672 1275 219" role="img" aria-label="everylife 원형 스탬프"><image href="${escape(asset('images/everylife-stickers.png'))}" width="1765" height="891" /></svg></div></div>`
@@ -66,8 +68,51 @@ document.querySelectorAll<HTMLButtonElement>('[data-project]').forEach(button =>
 }))
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)')
 
+const potentialTimers = new Map<HTMLIFrameElement, number>()
+document.querySelectorAll<HTMLIFrameElement>('[data-potential-preview]').forEach(frame => {
+  frame.addEventListener('load', () => {
+    if (!frame.getAttribute('src')) return
+    const previous = potentialTimers.get(frame)
+    if (previous) clearTimeout(previous)
+    // Both sites share the same origin; adjust only the embedded preview.
+    const previewDocument = frame.contentDocument
+    if (previewDocument) {
+      const style = previewDocument.createElement('style')
+      style.textContent = '.rotating-logo{bottom:23%!important;right:6%!important;width:20%!important;max-width:112px;height:auto!important}'
+      previewDocument.head.appendChild(style)
+    }
+    potentialTimers.set(frame, window.setTimeout(() => {
+      if (frame.closest('.project-card')?.classList.contains('in-view') && !document.hidden) {
+        frame.src = frame.dataset.potentialPreview!
+      }
+    }, 7500))
+  })
+})
+
+document.addEventListener('visibilitychange', () => {
+  document.querySelectorAll<HTMLIFrameElement>('[data-potential-preview]').forEach(frame => {
+    const timer = potentialTimers.get(frame)
+    if (timer) clearTimeout(timer)
+    potentialTimers.delete(frame)
+    if (!document.hidden && frame.closest('.project-card')?.classList.contains('in-view') && !reducedMotion.matches) {
+      frame.src = frame.dataset.potentialPreview!
+    }
+  })
+})
+
 const observer = new IntersectionObserver(entries => entries.forEach(entry => {
   entry.target.classList.toggle('in-view', entry.isIntersecting)
+  const preview = entry.target.querySelector<HTMLIFrameElement>('[data-potential-preview]')
+  if (preview) {
+    if (entry.isIntersecting && !reducedMotion.matches) {
+      if (!preview.getAttribute('src')) preview.src = preview.dataset.potentialPreview!
+    } else {
+      const timer = potentialTimers.get(preview)
+      if (timer) clearTimeout(timer)
+      potentialTimers.delete(preview)
+      preview.removeAttribute('src')
+    }
+  }
   const video = entry.target.querySelector('video')
   if (video) { video.muted = true; if (entry.isIntersecting && !reducedMotion.matches) void video.play().catch(() => entry.target.classList.add('video-paused')); else video.pause() }
 }), { threshold: 0.05 })
