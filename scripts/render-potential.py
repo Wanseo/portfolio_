@@ -28,6 +28,18 @@ def ease(t):
     t = max(0, min(1, t))
     return t * t * (3 - 2 * t)
 
+def website_ease(t):
+    t = max(0, min(1, t))
+    low, high = 0.0, 1.0
+    for _ in range(20):
+        u = (low + high) / 2
+        x = 3 * (1 - u) ** 2 * u * 0.4 + 3 * (1 - u) * u ** 2 * 0.2 + u ** 3
+        if x < t:
+            low = u
+        else:
+            high = u
+    return 3 * (1 - u) * u ** 2 + u ** 3
+
 def paste(canvas, image, x, y, opacity=1):
     if opacity < 1:
         image = image.copy()
@@ -36,12 +48,12 @@ def paste(canvas, image, x, y, opacity=1):
 
 def frame(t):
     canvas = Image.new('RGBA', (W, H), 'white')
-    move = ease((t - 1.2) / 1.8)
+    move = website_ease((t - 0.75) / 0.3)
     width = round(570 - 64 * move)
     brand = logo.resize((width, round(width * logo.height / logo.width)), RESAMPLE)
     y = (H - brand.height) / 2 * (1 - move) + 96 * move
-    paste(canvas, brand, (W - width) / 2, y)
-    reveal = ease((t - 2.4) / 1.0)
+    paste(canvas, brand, (W - width) / 2, y, ease(t / 0.25))
+    reveal = ease((t - 1.05) / 0.25)
     content = Image.new('RGBA', (W, H))
     draw = ImageDraw.Draw(content)
     labels = ['Shop', 'About', 'Archive', 'Contact']
@@ -51,7 +63,7 @@ def frame(t):
         draw.text((x, 254), label, font=nav_font, fill='#20201e')
         x += size + 30
     paste(content, box, 122, 423)
-    rotated = circle.rotate(-25 - max(0, t - 3.4) * 12, resample=Image.Resampling.BICUBIC, expand=True)
+    rotated = circle.rotate(-25 - max(0, t - 1.3) * 12, resample=Image.Resampling.BICUBIC, expand=True)
     paste(content, rotated, 488 - rotated.width / 2, 865 - rotated.height / 2)
     draw.text((30, 1004), '© 2026 POTENTIAL.', font=footer_font, fill='#30302e')
     location = 'Seoul, Korea'
@@ -60,8 +72,8 @@ def frame(t):
     return canvas.convert('RGB')
 
 out = ROOT / 'public/videos'
-frame(0).save(out / 'potential.jpg', quality=95)
-frame(4).save(out / 'potential-layout.jpg', quality=95)
+frame(0.5).save(out / 'potential.jpg', quality=95)
+frame(1.3).save(out / 'potential-layout.jpg', quality=95)
 writer = imageio_ffmpeg.write_frames(str(out / 'potential.mp4'), (W, H), fps=FPS, codec='libx264', pix_fmt_out='yuv420p', macro_block_size=2, output_params=['-crf', '18', '-movflags', '+faststart'])
 writer.send(None)
 for i in range(8 * FPS):
