@@ -17,7 +17,7 @@ export const profile = {
   name: 'WANSEO',
   email: 'wanseo1206@gmail.com',
   instagram: 'https://www.instagram.com/wsjoy_/',
-  introduction: 'I have experience in development, marketing, and graphic design.',
+  introduction: 'I have worked in development, marketing, and graphic design.',
 }
 
 // 배열 순서대로 카드가 표시되며, 마지막 카드가 01입니다.
