@@ -139,3 +139,5 @@ footer{border-top:0}
 .potential-dialog-art{aspect-ratio:1.3;background:#fff}
 .potential-detail-video{display:block;width:86%;height:86%;object-fit:contain}
 .potential-dialog-art{display:flex;align-items:center;justify-content:center}
+
+.potential-dialog{width:min(1060px,calc(100% - 32px))}
