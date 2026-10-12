@@ -18,7 +18,7 @@ mask = Image.new('L', (184, 207))
 ImageDraw.Draw(mask).rounded_rectangle((3, 3, 180, 203), radius=36, fill=255)
 mask = mask.filter(ImageFilter.GaussianBlur(5))
 
-def candy_cutout(frame, bounds, width):
+def candy_cutout(frame, bounds, width, heart_shape=False):
     candy = frame.crop(bounds).convert('RGBA')
     # Remove the pink backdrop from the existing colorful candy artwork.
     alpha = Image.new('L', candy.size)
@@ -26,19 +26,29 @@ def candy_cutout(frame, bounds, width):
         0 if (r > g * 1.35 and b > g * 1.2) or max(r, g, b) - min(r, g, b) < 28 else 255
         for r, g, b, _ in candy.getdata()
     ])
-    candy.putalpha(alpha.filter(ImageFilter.MedianFilter(3)))
+    if heart_shape:
+        # Preserve the heart's pink lobe, which shares the backdrop's color.
+        alpha = Image.new('L', candy.size)
+        ImageDraw.Draw(alpha).polygon([(3, 15), (7, 8), (17, 6), (27, 11), (33, 6), (44, 2), (53, 6), (58, 16), (54, 28), (34, 49), (11, 35), (3, 24)], fill=255)
+        alpha = alpha.filter(ImageFilter.GaussianBlur(0.6))
+    else:
+        alpha = alpha.filter(ImageFilter.MedianFilter(3))
+    candy.putalpha(alpha)
     return candy.resize((width, round(candy.height * width / candy.width)), Image.Resampling.LANCZOS)
 
 for i, data in enumerate(reader):
     frame = Image.frombytes('RGB', size, data)
     if i == 0:
         worm = candy_cutout(frame, (203, 6, 277, 43), 64)
-        heart = candy_cutout(frame, (10, 299, 69, 350), 42)
+        heart = candy_cutout(frame, (10, 299, 69, 350), 42, heart_shape=True)
+        upper_heart = candy_cutout(frame, (10, 299, 69, 350), 46, heart_shape=True)
+        lower_heart = candy_cutout(frame, (10, 299, 69, 350), 36, heart_shape=True)
         rainbow = candy_cutout(frame, (27, 209, 68, 259), 30)
         candies = [
             (worm, 94, 178, -28), (worm, 329, 202, 32),
             (worm, 91, 279, 24), (worm, 320, 322, -24),
             (heart, 329, 133, -12), (rainbow, 120, 337, 18),
+            (upper_heart, 175, 96, 17), (lower_heart, 236, 349, -23),
         ]
     character = frame.crop((160, 150, 320, 330)).resize((184, 207), Image.Resampling.LANCZOS)
     frame.paste(character, (148, 137), mask)
