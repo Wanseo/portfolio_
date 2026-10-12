@@ -41,7 +41,7 @@ const everylifeDetail = (project: Project) => `
       <dl class="goods-facts"><div><dt>Role</dt><dd>${escape(project.role ?? '')}</dd></div><div><dt>Tool</dt><dd>Adobe Illustrator</dd></div></dl></div>
     </section>
     <section class="goods-section"><div class="goods-section-heading"><span class="goods-index">02 / DESIGN BOARD</span></div>
-      <a class="goods-board-link" href="${escape(asset(project.image!))}" target="_blank" rel="noopener noreferrer" aria-label="everylife 디자인 원본 크게 보기"><img class="goods-board" src="${escape(asset(project.image!))}" alt="네 가지 캐릭터, 패키지 그래픽, 다섯 가지 원형 스티커와 로고 컬러 조합" loading="lazy"/><span>DESIGN BOARD · 원본 크게 보기 ↗</span></a>
+      <a class="goods-board-link" href="${escape(asset(project.image!))}" target="_blank" rel="noopener noreferrer" aria-label="everylife 디자인 원본 크게 보기"><img class="goods-board" src="${escape(asset(project.image!))}" alt="흰색 칼선이 있는 기저귀 스티커 네 개, 아기 캐릭터 네 개, 원형 로고 스티커 다섯 개" loading="lazy"/><span>DESIGN BOARD · 원본 크게 보기 ↗</span></a>
     </section>
     <section class="goods-section"><div class="goods-section-heading"><span class="goods-index">03 / COLOR & TYPE</span></div>
       <div class="goods-palette">${[['Rose','#DEBBBB'],['Sky','#B3D1DE'],['Mauve','#777083'],['Blush','#E1D5D7'],['Mint','#DBE9E5']].map(([name,color]) => `<div><i style="background:${color}"></i><span>${name}</span><small>${color}</small></div>`).join('')}</div>
