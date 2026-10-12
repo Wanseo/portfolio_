@@ -34,7 +34,7 @@ const everylifeDetail = (project: Project) => `
 
     </header>
     <section class="goods-section goods-overview dialog-copy">
-      <span class="eyebrow">${escape(project.category)}${project.year ? ` / ${escape(project.year)}` : ''}</span>
+      <span class="eyebrow">${escape(project.category)}${project.year ? ` ${escape(project.year)}` : ''}</span>
       <h2 id="dialog-title">${escape(project.title)}</h2>
       <div><p>${escape(project.description).replace(/\n/g, '<br>')}</p>
       <dl class="goods-facts"><div><dt>Role</dt><dd>${escape(project.role ?? '')}</dd></div><div><dt>Tool</dt><dd>Adobe Illustrator</dd></div></dl></div>
