@@ -201,3 +201,5 @@ footer{border-top:0}
 
 #project-dialog .dialog-copy p{max-width:580px;word-break:keep-all}
 #project-dialog:not([data-project="guestbook"]) .dialog-copy p{max-width:560px}
+
+@media(max-width:600px){#project-dialog:not([data-project="guestbook"]) .dialog-copy p{max-width:calc(100% - 20px)}}
