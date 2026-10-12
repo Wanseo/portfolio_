@@ -190,3 +190,5 @@ footer{border-top:0}
 .header,.header .wordmark,.header nav,.header-brand{align-items:center}
 
 .header,.header nav{align-items:baseline}
+
+.header .wordmark{align-items:baseline}
