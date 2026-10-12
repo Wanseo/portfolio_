@@ -32,7 +32,7 @@ const everylifeDetail = (project: Project) => `
     <header class="goods-hero">
       <span class="eyebrow">merch graphic design</span>
       <h2 id="dialog-title"><img class="goods-hero-logo" src="${escape(asset('images/everylife-logo.svg'))}" alt="everylife" /></h2>
-      <div class="goods-hero-bottom"><span>SCROLL TO EXPLORE ↓</span></div>
+
     </header>
     <section class="goods-section goods-overview">
       <span class="goods-index">01 / OVERVIEW</span>
