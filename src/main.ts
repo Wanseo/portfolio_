@@ -48,7 +48,7 @@ const everylifeDetail = (project: Project) => `
       <div class="goods-type"><span>everylife</span><p>캐릭터의 자유로운 선과 대비되는<br>차분한 세리프 로고.</p></div>
     </section>
     <section class="goods-section goods-notes"><span class="goods-index">04 / DESIGN NOTES</span><div><p>캐릭터의 뒷모습과 원형 로고를 결합해 시리즈의 통일감을 만들고, 컬러 변주로 각 디자인의 개성을 살렸습니다. 원형과 직사각형으로 확장한 로고 그래픽은 다양한 굿즈에 적용할 수 있도록 구성했습니다.</p></div></section>
-    <footer class="goods-end"><span>everylife</span><span>GOODS DESIGN · WANSEO JO</span></footer>
+
   </article>`
 
 const projectDialog = document.querySelector<HTMLDialogElement>('#project-dialog')!
