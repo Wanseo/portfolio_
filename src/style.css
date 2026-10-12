@@ -193,5 +193,5 @@ footer{border-top:0}
 
 .header .wordmark{align-items:baseline}
 
-.intro{padding-top:50px;padding-bottom:48px}
-@media(max-width:600px){.intro{padding-top:36px;padding-bottom:40px}}
+.intro{padding-top:50px;padding-bottom:47px}
+@media(max-width:600px){.intro{padding-top:36px;padding-bottom:39px}}
