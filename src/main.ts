@@ -44,10 +44,10 @@ const everylifeDetail = (project: Project) => `
       <div class="goods-palette">${[['Rose','#DEBBBB'],['Sky','#B3D1DE'],['Mauve','#777083'],['Blush','#E1D5D7'],['Mint','#DBE9E5']].map(([name,color]) => `<div><i style="background:${color}"></i><span>${name}</span><small>${color}</small></div>`).join('')}</div>
 
     </section>
-    <section class="goods-section goods-design-board"><div class="goods-section-heading"><span class="goods-index">02 / DESIGN BOARD</span></div>
+    <section class="goods-section goods-design-board"><div class="goods-section-heading"><span class="goods-index">DESIGN BOARD</span></div>
       <a class="goods-board-link" href="${escape(asset(project.image!))}" target="_blank" rel="noopener noreferrer" aria-label="everylife 디자인 원본 크게 보기"><img class="goods-board" src="${escape(asset(project.image!))}" alt="흰색 칼선이 있는 기저귀 스티커 네 개, 아기 캐릭터 네 개, 원형 로고 스티커 다섯 개" loading="lazy"/></a>
     </section>
-    <section class="goods-section goods-application"><div class="goods-section-heading"><span class="goods-index">04 / APPLICATION</span></div><img class="goods-application-image goods-macbook-image" src="${escape(asset('images/everylife-macbook-application.svg?v=7'))}" alt="맥북에 everylife 아기 스티커 두 개, 원형 로고 두 개와 기저귀 스티커 한 개를 붙인 굿즈 적용 목업" loading="lazy" /><img class="goods-application-image goods-notebook-image" src="${escape(asset('images/everylife-notebook-application.svg?v=2'))}" alt="오프화이트 배경의 노트에 원본 보라색 원형 로고, 갈색머리 아기와 기저귀 스티커를 붙인 목업" loading="lazy" /><img class="goods-application-image goods-bottle-image" src="${escape(asset('images/everylife-bottle-curly.png'))}" alt="everylife 원형 로고, 기저귀와 하늘색 기저귀를 입은 뽀글머리 아기 스티커를 붙인 투명 물병 적용 사진" loading="lazy" /></section>
+    <section class="goods-section goods-application"><div class="goods-section-heading"><span class="goods-index">APPLICATION</span></div><img class="goods-application-image goods-macbook-image" src="${escape(asset('images/everylife-macbook-application.svg?v=7'))}" alt="맥북에 everylife 아기 스티커 두 개, 원형 로고 두 개와 기저귀 스티커 한 개를 붙인 굿즈 적용 목업" loading="lazy" /><img class="goods-application-image goods-notebook-image" src="${escape(asset('images/everylife-notebook-application.svg?v=2'))}" alt="오프화이트 배경의 노트에 원본 보라색 원형 로고, 갈색머리 아기와 기저귀 스티커를 붙인 목업" loading="lazy" /><img class="goods-application-image goods-bottle-image" src="${escape(asset('images/everylife-bottle-curly.png'))}" alt="everylife 원형 로고, 기저귀와 하늘색 기저귀를 입은 뽀글머리 아기 스티커를 붙인 투명 물병 적용 사진" loading="lazy" /></section>
 
   </article>`
 
