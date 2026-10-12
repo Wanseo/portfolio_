@@ -178,7 +178,7 @@ footer{border-top:0}
 @media(max-width:600px){.experience-details{font-size:clamp(7px,2.2vw,12px);letter-spacing:0}}
 
 .work{padding-top:38px}
-@media(max-width:600px){.work{padding-top:24px}.header nav{gap:12px}.header .wordmark{gap:6px}.header .wordmark-sub{font-size:7px;letter-spacing:.5px}}
+@media(max-width:600px){.work{padding-top:24px}.header nav{gap:12px}.header .wordmark{gap:12px}.header .wordmark-sub{font-size:7px;letter-spacing:.5px}}
 
 .experience-menu .skill-list{left:0;right:auto}
 @media(max-width:600px){.header{flex-wrap:wrap;gap:16px}.header nav{margin-left:auto;position:relative}.experience-menu{position:static}.experience-menu .skill-list{left:auto;right:0}}
