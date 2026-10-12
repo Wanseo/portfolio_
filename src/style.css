@@ -104,8 +104,8 @@ footer{border-top:0}
 .goods-board-link{display:block;background:white;padding:24px}
 .goods-board{display:block;width:100%;height:auto}
 .goods-board-link>span{display:block;font-size:9px;letter-spacing:1px;color:#797b70;text-align:right;margin-top:20px}
-.goods-palette{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:30px}
-.goods-palette i{display:block;aspect-ratio:1.15;border-radius:50%}
+.goods-palette{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:20px;max-width:360px}
+.goods-palette i{display:block;width:32px;height:32px;border-radius:50%}
 .goods-palette span,.goods-palette small{display:block;font-size:11px;margin-top:12px}
 .goods-palette small{font-size:9px;color:#797b70;margin-top:4px;letter-spacing:.06em}
 .goods-type{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-top:40px;background:var(--everylife-purple);padding:30px}

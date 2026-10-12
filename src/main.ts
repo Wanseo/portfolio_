@@ -40,14 +40,14 @@ const everylifeDetail = (project: Project) => `
       <div><p>${escape(project.description).replace(/\n/g, '<br>')}</p>
       <dl class="goods-facts"><div><dt>Role</dt><dd>${escape(project.role ?? '')}</dd></div><div><dt>Tool</dt><dd>Adobe Illustrator</dd></div></dl></div>
     </section>
-    <section class="goods-section goods-design-board"><div class="goods-section-heading"><span class="goods-index">02 / DESIGN BOARD</span></div>
-      <a class="goods-board-link" href="${escape(asset(project.image!))}" target="_blank" rel="noopener noreferrer" aria-label="everylife 디자인 원본 크게 보기"><img class="goods-board" src="${escape(asset(project.image!))}" alt="흰색 칼선이 있는 기저귀 스티커 네 개, 아기 캐릭터 네 개, 원형 로고 스티커 다섯 개" loading="lazy"/></a>
-    </section>
-    <section class="goods-section"><div class="goods-section-heading"><span class="goods-index">03 / COLOR & TYPE</span></div>
+    <section class="goods-section"><div class="goods-section-heading"><span class="goods-index">01 / COLOR PALETTE</span></div>
       <div class="goods-palette">${[['Rose','#DEBBBB'],['Sky','#B3D1DE'],['Mauve','#777083'],['Blush','#E1D5D7'],['Mint','#DBE9E5']].map(([name,color]) => `<div><i style="background:${color}"></i><span>${name}</span><small>${color}</small></div>`).join('')}</div>
 
     </section>
-    <section class="goods-section goods-notes"><span class="goods-index">04 / DESIGN NOTES</span><div><p>캐릭터의 뒷모습과 원형 로고를 결합해 시리즈의 통일감을 만들고, 컬러 변주로 각 디자인의 개성을 살렸습니다. 원형과 직사각형으로 확장한 로고 그래픽은 다양한 굿즈에 적용할 수 있도록 구성했습니다.</p></div></section>
+    <section class="goods-section goods-design-board"><div class="goods-section-heading"><span class="goods-index">02 / DESIGN BOARD</span></div>
+      <a class="goods-board-link" href="${escape(asset(project.image!))}" target="_blank" rel="noopener noreferrer" aria-label="everylife 디자인 원본 크게 보기"><img class="goods-board" src="${escape(asset(project.image!))}" alt="흰색 칼선이 있는 기저귀 스티커 네 개, 아기 캐릭터 네 개, 원형 로고 스티커 다섯 개" loading="lazy"/></a>
+    </section>
+    <section class="goods-section goods-notes"><span class="goods-index">03 / DESIGN NOTES</span><div><p>캐릭터의 뒷모습과 원형 로고를 결합해 시리즈의 통일감을 만들고, 컬러 변주로 각 디자인의 개성을 살렸습니다. 원형과 직사각형으로 확장한 로고 그래픽은 다양한 굿즈에 적용할 수 있도록 구성했습니다.</p></div></section>
 
   </article>`
 
