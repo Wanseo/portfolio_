@@ -200,3 +200,4 @@ footer{border-top:0}
 @media(max-width:600px){.card-meta{margin-top:3px}}
 
 #project-dialog .dialog-copy p{max-width:580px;word-break:keep-all}
+#project-dialog:not([data-project="guestbook"]) .dialog-copy p{max-width:560px}
