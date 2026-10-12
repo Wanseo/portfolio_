@@ -30,7 +30,6 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 const everylifeDetail = (project: Project) => `
   <article class="goods-case">
     <header class="goods-hero">
-      <span class="eyebrow">merch graphic design</span>
       <h2><img class="goods-hero-logo" src="${escape(asset('images/everylife-logo.svg'))}" alt="everylife" /></h2>
 
     </header>
