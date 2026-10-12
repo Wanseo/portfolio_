@@ -188,3 +188,5 @@ footer{border-top:0}
 .experience-menu .skill-list li{display:flex;justify-content:space-between;gap:12px}
 
 .header,.header .wordmark,.header nav,.header-brand{align-items:center}
+
+.header,.header nav{align-items:baseline}
