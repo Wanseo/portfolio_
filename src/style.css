@@ -98,7 +98,7 @@ footer{border-top:0}
 .goods-facts>div{display:flex;align-items:baseline;gap:24px;margin:10px 0}
 .goods-facts dt{min-width:55px;font-size:9px;letter-spacing:1px;color:#797b70}
 .goods-facts dd{margin:0;font-size:12px;line-height:1.6}
-.goods-section-heading{display:flex;justify-content:space-between;align-items:baseline;gap:20px;margin-bottom:24px}
+.goods-section-heading{display:flex;flex-direction:column;align-items:flex-start;gap:16px;margin-bottom:24px}
 .goods-section-heading h3{margin:0}
 .goods-board-link{display:block;background:white;padding:24px}
 .goods-board{display:block;width:100%;height:auto}
@@ -145,3 +145,7 @@ footer{border-top:0}
 
 .goods-overview.dialog-copy{display:block;padding:36px}
 @media(max-width:600px){.goods-overview.dialog-copy{padding:24px}}
+
+.goods-notes{display:block}
+.goods-notes>.goods-index{display:block;margin-bottom:16px}
+.goods-case h2,.goods-case h3{text-align:left}
