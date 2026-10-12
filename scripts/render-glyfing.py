@@ -12,7 +12,7 @@ VIDEOS = ROOT / 'public/videos'
 reader = imageio_ffmpeg.read_frames(str(VIDEOS / 'glyfing.mp4'), pix_fmt='rgb24')
 meta = next(reader)
 size = meta['size']
-writer = imageio_ffmpeg.write_frames(str(VIDEOS / 'glyfing-main.mp4'), size, fps=meta['fps'], codec='libx264', macro_block_size=2, output_params=['-crf', '18', '-movflags', '+faststart'])
+writer = imageio_ffmpeg.write_frames(str(VIDEOS / 'glyfing-main.mp4'), size, fps=meta['fps'], codec='libx264', macro_block_size=2, output_params=['-crf', '16', '-vf', 'scale=out_color_matrix=bt709', '-color_primaries', 'bt709', '-color_trc', 'bt709', '-colorspace', 'bt709', '-color_range', 'tv', '-movflags', '+faststart'])
 writer.send(None)
 mask = Image.new('L', (184, 207))
 ImageDraw.Draw(mask).rounded_rectangle((3, 3, 180, 203), radius=36, fill=255)

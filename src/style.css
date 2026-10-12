@@ -218,3 +218,6 @@ footer{border-top:0}
 .potential-card-content .potential-card-story{position:static;width:86%;font-size:2.8cqw;margin:0}
 
 .potential-card-content{transform:translateY(-5cqw) scale(1.2);transform-origin:center}
+
+.project-card[data-project="glyfing"]::after{background:none}
+.project-card[data-project="glyfing"] .card-bottom{text-shadow:0 1px 4px #761044}
