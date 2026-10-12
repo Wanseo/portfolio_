@@ -64,15 +64,15 @@ footer{border-top:0}
 }
 .project-role dt {
   min-width: 34px;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 600;
   letter-spacing: 1.3px;
   color: #77776f;
 }
 .project-role dd {
   margin: 0;
-  font-size: 14px;
-  line-height: 1.8;
+  font-size: 12px;
+  line-height: 1.6;
 }
 
 /* everylife goods case study */
