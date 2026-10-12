@@ -40,7 +40,7 @@ const everylifeDetail = (project: Project) => `
       <div><p>${escape(project.description).replace(/\n/g, '<br>')}</p>
       <dl class="goods-facts"><div><dt>ROLE</dt><dd>${escape(project.role ?? '')}</dd></div></dl></div>
     </section>
-    <section class="goods-section"><div class="goods-section-heading"><span class="goods-index">02 / DESIGN BOARD</span><h3>하나의 브랜드, 다양한 표정</h3></div>
+    <section class="goods-section"><div class="goods-section-heading"><span class="goods-index">02 / DESIGN BOARD</span></div>
       <a class="goods-board-link" href="${escape(asset(project.image!))}" target="_blank" rel="noopener noreferrer" aria-label="everylife 디자인 원본 크게 보기"><img class="goods-board" src="${escape(asset(project.image!))}" alt="네 가지 캐릭터, 패키지 그래픽, 다섯 가지 원형 스티커와 로고 컬러 조합" loading="lazy"/><span>DESIGN BOARD · 원본 크게 보기 ↗</span></a>
     </section>
     <section class="goods-section"><div class="goods-section-heading"><span class="goods-index">03 / COLOR & TYPE</span><h3>부드러운 색, 선명한 개성</h3></div>
