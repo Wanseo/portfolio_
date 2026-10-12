@@ -4,6 +4,7 @@ import { profile, projects, type Project } from './projects'
 const escape = (value: string) => value.replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]!)
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
 const external = (url: string) => /^https?:\/\//.test(url)
+const projectType = (project: Project) => project.id === 'everylife' ? 'Merch' : project.id === 'potential' ? 'Website' : 'Interactive Website'
 const arrow = '<span aria-hidden="true">↗</span>'
 const art = (project: Project, livePreview = false) => project.id === 'potential' && livePreview
   ? `<div class="potential-logo-cover"><img src="${escape(asset('images/potential-logo.png'))}" alt="POTENTIAL" /></div>`
@@ -34,7 +35,7 @@ const everylifeDetail = (project: Project) => `
 
     </header>
     <section class="goods-section goods-overview dialog-copy">
-      <span class="eyebrow">${escape(project.category)}${project.year ? ` ${escape(project.year)}` : ''}</span>
+      <span class="eyebrow">${projectType(project)}</span>
       <h2 id="dialog-title">${escape(project.title)}</h2>
       <div><p>${escape(project.description).replace(/\n/g, '<br>')}</p>
       <dl class="goods-facts"><div><dt>Role</dt><dd>${escape(project.role ?? '')}</dd></div><div><dt>Tool</dt><dd>Adobe Illustrator</dd></div></dl></div>
@@ -61,7 +62,7 @@ for (const dialog of [projectDialog]) {
 document.querySelectorAll<HTMLButtonElement>('[data-project]').forEach(button => button.addEventListener('click', () => {
   const project = projects.find(item => item.id === button.dataset.project)!
   projectDialog.classList.toggle('goods-dialog', project.id === 'everylife')
-  document.querySelector('#dialog-content')!.innerHTML = project.id === 'everylife' ? everylifeDetail(project) : `<div class="dialog-art${project.id === 'glyfing' ? ' glyfing-dialog-art' : project.id === 'potential' ? ' potential-dialog-art' : ''}">${project.id === 'glyfing' ? `<video class="glyfing-detail-video" src="${escape(asset('videos/glyfing-detail.mp4?v=6'))}" poster="${escape(asset('videos/glyfing-detail.jpg?v=6'))}" muted loop playsinline preload="auto" aria-label="GLYF 최신 웹사이트 녹화"></video>` : project.id === 'potential' ? `<video class="potential-detail-video" src="${escape(asset('videos/potential.mp4?v=11'))}" poster="${escape(asset('videos/potential.jpg?v=11'))}" muted loop playsinline preload="auto" aria-label="POTENTIAL 웹사이트 미리보기"></video>` : art(project)}</div><div class="dialog-copy"><span class="eyebrow">${escape(project.category)} ${project.year}</span><h2 id="dialog-title">${escape(project.title)}</h2><p>${escape(project.description).replace(/\n/g, '<br>')}</p>${project.role ? `<dl class="project-role"><dt>Role</dt><dd>${escape(project.role)}</dd></dl>` : ''}${project.url && external(project.url) ? `<a class="outline-button" href="${escape(project.url)}" target="_blank" rel="noopener noreferrer">VISIT WEBSITE ${arrow}</a>` : '<span class="sample-label">CONCEPT PREVIEW · 샘플 프로젝트</span>'}</div>`
+  document.querySelector('#dialog-content')!.innerHTML = project.id === 'everylife' ? everylifeDetail(project) : `<div class="dialog-art${project.id === 'glyfing' ? ' glyfing-dialog-art' : project.id === 'potential' ? ' potential-dialog-art' : ''}">${project.id === 'glyfing' ? `<video class="glyfing-detail-video" src="${escape(asset('videos/glyfing-detail.mp4?v=6'))}" poster="${escape(asset('videos/glyfing-detail.jpg?v=6'))}" muted loop playsinline preload="auto" aria-label="GLYF 최신 웹사이트 녹화"></video>` : project.id === 'potential' ? `<video class="potential-detail-video" src="${escape(asset('videos/potential.mp4?v=11'))}" poster="${escape(asset('videos/potential.jpg?v=11'))}" muted loop playsinline preload="auto" aria-label="POTENTIAL 웹사이트 미리보기"></video>` : art(project)}</div><div class="dialog-copy"><span class="eyebrow">${projectType(project)}</span><h2 id="dialog-title">${escape(project.title)}</h2><p>${escape(project.description).replace(/\n/g, '<br>')}</p>${project.role ? `<dl class="project-role"><dt>Role</dt><dd>${escape(project.role)}</dd></dl>` : ''}${project.url && external(project.url) ? `<a class="outline-button" href="${escape(project.url)}" target="_blank" rel="noopener noreferrer">VISIT WEBSITE ${arrow}</a>` : '<span class="sample-label">CONCEPT PREVIEW · 샘플 프로젝트</span>'}</div>`
   openDialog(projectDialog)
   projectDialog.scrollTop = 0
   projectDialog.querySelectorAll('video').forEach(video => { video.muted = true; video.controls = true; if (!reducedMotion.matches) void video.play().catch(() => {}) })
