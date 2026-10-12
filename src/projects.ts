@@ -17,7 +17,7 @@ export const profile = {
   name: 'WANSEO',
   email: 'wanseo1206@gmail.com',
   instagram: 'https://www.instagram.com/wsjoy_/',
-  introduction: 'I have hands-on experience in development, marketing planning, and design.',
+  introduction: 'I have hands-on experience in development, marketing planning, and graphic design.',
 }
 
 // 새 작업은 배열 맨 앞에 추가하세요. 최신 작업이 왼쪽부터 표시됩니다.
