@@ -37,7 +37,7 @@ const everylifeDetail = (project: Project) => `
     <section class="goods-section goods-overview dialog-copy">
       <span class="eyebrow">${escape(project.category)}${project.year ? ` / ${escape(project.year)}` : ''}</span>
       <h2 id="dialog-title">${escape(project.title)}</h2>
-      <div><p>${escape(project.description)}</p>
+      <div><p>${escape(project.description).replace(/\n/g, '<br>')}</p>
       <dl class="goods-facts"><div><dt>ROLE</dt><dd>${escape(project.role ?? '')}</dd></div><div><dt>OUTPUT</dt><dd>Character Illustration, Sticker Graphics</dd></div></dl></div>
     </section>
     <section class="goods-section"><div class="goods-section-heading"><span class="goods-index">02 / DESIGN BOARD</span><h3>하나의 브랜드, 다양한 표정</h3></div>
