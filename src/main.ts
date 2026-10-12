@@ -7,7 +7,7 @@ const external = (url: string) => /^https?:\/\//.test(url)
 const projectType = (project: Project) => project.id === 'everylife' ? 'Merch Sticker' : project.id === 'potential' ? 'Website' : 'Interactive Website'
 const arrow = '<span aria-hidden="true">↗</span>'
 const art = (project: Project, livePreview = false) => project.id === 'potential' && livePreview
-  ? `<div class="potential-logo-cover"><img src="${escape(asset('images/potential-logo.png'))}" alt="POTENTIAL" /></div>`
+  ? `<div class="potential-logo-cover"><img src="${escape(asset('images/potential-logo.png'))}" alt="POTENTIAL" /><p class="potential-card-story">He said to me, “You are my potential”<br>So I started making all sorts of things.<br>Maybe I take after my dad<br>I love making beautiful things.<br>I hope the things I make bring you joy.</p></div>`
   : project.id === 'glyfing' && livePreview
   ? `<video class="project-video" src="${escape(asset('videos/glyfing.mp4'))}" poster="${escape(asset('videos/glyfing.jpg'))}" muted loop playsinline preload="auto" aria-label="GLYF 캐릭터와 젤리의 움직이는 미리보기"></video>`
   : project.id === 'everylife'
