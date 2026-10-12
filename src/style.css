@@ -161,4 +161,4 @@ footer{border-top:0}
 .goods-application-image{display:block;width:100%;height:auto;margin:24px auto 0}
 
 .goods-design-board,.goods-application{position:relative;isolation:isolate}
-.goods-design-board::after,.goods-application::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:url('./assets/grain.svg') repeat;background-size:192px 192px;mix-blend-mode:soft-light;opacity:.14}
+.goods-design-board::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:url('./assets/grain.svg') repeat;background-size:192px 192px;mix-blend-mode:soft-light;opacity:.14}
