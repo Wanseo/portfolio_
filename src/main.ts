@@ -4,7 +4,7 @@ import { profile, projects, type Project } from './projects'
 const escape = (value: string) => value.replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]!)
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
 const external = (url: string) => /^https?:\/\//.test(url)
-const projectType = (project: Project) => project.id === 'everylife' ? 'Merch' : project.id === 'potential' ? 'Website' : 'Interactive Website'
+const projectType = (project: Project) => project.id === 'everylife' ? 'Merch Sticker' : project.id === 'potential' ? 'Website' : 'Interactive Website'
 const arrow = '<span aria-hidden="true">↗</span>'
 const art = (project: Project, livePreview = false) => project.id === 'potential' && livePreview
   ? `<div class="potential-logo-cover"><img src="${escape(asset('images/potential-logo.png'))}" alt="POTENTIAL" /></div>`
