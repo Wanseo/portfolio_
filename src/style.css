@@ -150,3 +150,6 @@ footer{border-top:0}
 .goods-notes{display:block}
 .goods-notes>.goods-index{display:block;margin-bottom:16px}
 .goods-case h2,.goods-case h3{text-align:left}
+
+.goods-overview.dialog-copy p{font-size:14px;color:#171715;line-height:1.8}
+@media(max-width:600px){.goods-overview.dialog-copy p{font-size:13px}}
