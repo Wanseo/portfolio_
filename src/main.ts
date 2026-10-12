@@ -47,7 +47,7 @@ const everylifeDetail = (project: Project) => `
     <section class="goods-section goods-design-board"><div class="goods-section-heading"><span class="goods-index">02 / DESIGN BOARD</span></div>
       <a class="goods-board-link" href="${escape(asset(project.image!))}" target="_blank" rel="noopener noreferrer" aria-label="everylife 디자인 원본 크게 보기"><img class="goods-board" src="${escape(asset(project.image!))}" alt="흰색 칼선이 있는 기저귀 스티커 네 개, 아기 캐릭터 네 개, 원형 로고 스티커 다섯 개" loading="lazy"/></a>
     </section>
-    <section class="goods-section goods-application"><div class="goods-section-heading"><span class="goods-index">04 / APPLICATION</span></div><img class="goods-application-image goods-macbook-image" src="${escape(asset('images/everylife-macbook-application.svg?v=6'))}" alt="맥북에 everylife 아기 스티커 두 개, 원형 로고 두 개와 기저귀 스티커 한 개를 붙인 굿즈 적용 목업" loading="lazy" /><img class="goods-application-image goods-bottle-image" src="${escape(asset('images/everylife-bottle.png'))}" alt="everylife 원형 로고, 기저귀와 아기 캐릭터 스티커를 붙인 투명 물병 적용 사진" loading="lazy" /></section>
+    <section class="goods-section goods-application"><div class="goods-section-heading"><span class="goods-index">04 / APPLICATION</span></div><img class="goods-application-image goods-macbook-image" src="${escape(asset('images/everylife-macbook-application.svg?v=6'))}" alt="맥북에 everylife 아기 스티커 두 개, 원형 로고 두 개와 기저귀 스티커 한 개를 붙인 굿즈 적용 목업" loading="lazy" /><img class="goods-application-image goods-bottle-image" src="${escape(asset('images/everylife-bottle-white.png'))}" alt="everylife 원형 로고, 기저귀와 아기 캐릭터 스티커를 붙인 투명 물병 적용 사진" loading="lazy" /></section>
 
   </article>`
 
