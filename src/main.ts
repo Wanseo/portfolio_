@@ -38,7 +38,7 @@ const everylifeDetail = (project: Project) => `
       <span class="eyebrow">${escape(project.category)}${project.year ? ` / ${escape(project.year)}` : ''}</span>
       <h2 id="dialog-title">${escape(project.title)}</h2>
       <div><p>${escape(project.description).replace(/\n/g, '<br>')}</p>
-      <dl class="goods-facts"><div><dt>ROLE</dt><dd>${escape(project.role ?? '')}</dd></div></dl></div>
+      <dl class="goods-facts"><div><dt>ROLE</dt><dd>${escape(project.role ?? '')}</dd></div><div><dt>TOOL</dt><dd>Adobe Illustrator</dd></div></dl></div>
     </section>
     <section class="goods-section"><div class="goods-section-heading"><span class="goods-index">02 / DESIGN BOARD</span></div>
       <a class="goods-board-link" href="${escape(asset(project.image!))}" target="_blank" rel="noopener noreferrer" aria-label="everylife 디자인 원본 크게 보기"><img class="goods-board" src="${escape(asset(project.image!))}" alt="네 가지 캐릭터, 패키지 그래픽, 다섯 가지 원형 스티커와 로고 컬러 조합" loading="lazy"/><span>DESIGN BOARD · 원본 크게 보기 ↗</span></a>
