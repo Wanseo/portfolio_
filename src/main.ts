@@ -47,7 +47,7 @@ const everylifeDetail = (project: Project) => `
     <section class="goods-section goods-design-board"><div class="goods-section-heading"><span class="goods-index">02 / DESIGN BOARD</span></div>
       <a class="goods-board-link" href="${escape(asset(project.image!))}" target="_blank" rel="noopener noreferrer" aria-label="everylife 디자인 원본 크게 보기"><img class="goods-board" src="${escape(asset(project.image!))}" alt="흰색 칼선이 있는 기저귀 스티커 네 개, 아기 캐릭터 네 개, 원형 로고 스티커 다섯 개" loading="lazy"/></a>
     </section>
-    <section class="goods-section goods-notes"><span class="goods-index">03 / DESIGN NOTES</span><div><p>캐릭터의 뒷모습과 원형 로고를 결합해 시리즈의 통일감을 만들고, 컬러 변주로 각 디자인의 개성을 살렸습니다. 원형과 직사각형으로 확장한 로고 그래픽은 다양한 굿즈에 적용할 수 있도록 구성했습니다.</p></div></section>
+    <section class="goods-section goods-application"><div class="goods-section-heading"><span class="goods-index">04 / APPLICATION</span></div><img class="goods-application-image" src="${escape(asset('images/everylife-macbook-application.svg'))}" alt="맥북에 everylife 아기 스티커 두 개, 원형 로고 두 개와 기저귀 스티커 한 개를 붙인 굿즈 적용 목업" loading="lazy" /></section>
 
   </article>`
 

@@ -157,3 +157,5 @@ footer{border-top:0}
 .goods-design-board{background:var(--everylife-purple)}
 .goods-design-board .goods-board-link{background:transparent}
 .goods-design-board .goods-index,.goods-design-board .goods-board-link>span{color:var(--everylife-on-purple)}
+
+.goods-application-image{display:block;width:100%;height:auto;margin:24px auto 0}
