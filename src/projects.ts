@@ -17,7 +17,7 @@ export const profile = {
   name: 'WANSEO',
   email: 'wanseo1206@gmail.com',
   instagram: 'https://www.instagram.com/wsjoy_/',
-  introduction: 'I have hands-on experience in development, marketing planning, and graphic design.',
+  introduction: 'I have hands-on experience in\nDevelopment(2021-2024)\nMarketing Planning(2025-2026)\nGraphic Design(2026-now)',
 }
 
 // 배열 순서대로 카드가 표시되며, 번호는 01부터 시작합니다.
