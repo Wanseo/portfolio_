@@ -86,7 +86,7 @@ footer{border-top:0}
 .goods-dialog{background:#faf9f6}
 .goods-dialog .close-button{position:sticky;top:16px;float:right;margin:16px 16px -60px 0}
 .goods-case{font-family:'DM Sans',Arial,'Apple SD Gothic Neo',sans-serif}
-.goods-hero{padding:80px 7% 30px;background:var(--everylife-purple);color:var(--everylife-on-purple)}
+.goods-hero{padding:80px 7% 70px;background:var(--everylife-purple);color:var(--everylife-on-purple)}
 .goods-hero h2{font:400 clamp(72px,13vw,160px)/1 Georgia,serif;letter-spacing:-.06em;margin:55px 0 30px}
 .goods-hero>p{font-size:clamp(20px,3vw,30px);line-height:1.6;letter-spacing:-.04em;margin:0}
 .goods-hero-bottom{display:flex;justify-content:space-between;gap:20px;margin-top:65px;font-size:9px;letter-spacing:.1em}
