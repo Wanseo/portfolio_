@@ -37,7 +37,7 @@ const everylifeDetail = (project: Project) => `
     <section class="goods-section goods-overview dialog-copy">
       <span class="eyebrow">${escape(project.category)}${project.year ? ` / ${escape(project.year)}` : ''}</span>
       <h2 id="dialog-title">${escape(project.title)}</h2>
-      <div><p>${escape(project.description)}</p><p>서로 다른 헤어스타일과 피부색의 캐릭터, 다섯 가지 파스텔 컬러, 간결한 로고를 하나의 시각 언어로 연결했습니다.</p>
+      <div><p>${escape(project.description)}</p>
       <dl class="goods-facts"><div><dt>ROLE</dt><dd>${escape(project.role ?? '')}</dd></div><div><dt>OUTPUT</dt><dd>Character Illustration, Sticker Graphics</dd></div></dl></div>
     </section>
     <section class="goods-section"><div class="goods-section-heading"><span class="goods-index">02 / DESIGN BOARD</span><h3>하나의 브랜드, 다양한 표정</h3></div>
