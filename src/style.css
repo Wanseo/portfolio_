@@ -153,3 +153,7 @@ footer{border-top:0}
 
 .goods-overview.dialog-copy p{font-size:14px;color:#171715;line-height:1.8}
 @media(max-width:600px){.goods-overview.dialog-copy p{font-size:13px}}
+
+.goods-design-board{background:var(--everylife-purple)}
+.goods-design-board .goods-board-link{background:transparent}
+.goods-design-board .goods-index,.goods-design-board .goods-board-link>span{color:var(--everylife-on-purple)}
