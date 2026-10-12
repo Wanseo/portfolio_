@@ -40,7 +40,7 @@ const everylifeDetail = (project: Project) => `
       <div><p>${escape(project.description).replace(/\n/g, '<br>')}</p>
       <dl class="goods-facts"><div><dt>Role</dt><dd>${escape(project.role ?? '')}</dd></div><div><dt>Tool</dt><dd>Adobe Illustrator</dd></div></dl></div>
     </section>
-    <section class="goods-section"><div class="goods-section-heading"><span class="goods-index">01 / COLOR PALETTE</span></div>
+    <section class="goods-section"><div class="goods-section-heading"><span class="goods-index">COLOR PALETTE</span></div>
       <div class="goods-palette">${[['Rose','#DEBBBB'],['Sky','#B3D1DE'],['Mauve','#777083'],['Blush','#E1D5D7'],['Mint','#DBE9E5']].map(([name,color]) => `<div><i style="background:${color}"></i><span>${name}</span><small>${color}</small></div>`).join('')}</div>
 
     </section>
