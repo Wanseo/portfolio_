@@ -10,7 +10,7 @@ const art = (project: Project, livePreview = false) => project.id === 'potential
   : project.id === 'glyfing' && livePreview
   ? `<video class="project-video" src="${escape(asset('videos/glyfing.mp4'))}" poster="${escape(asset('videos/glyfing.jpg'))}" muted loop playsinline preload="auto" aria-label="GLYFING 캐릭터와 젤리의 움직이는 미리보기"></video>`
   : project.id === 'everylife'
-  ? `<div class="everylife-cover"><img class="everylife-card-logo" src="${escape(asset('images/everylife-logo.svg'))}" alt="everylife" /><div class="everylife-card-stickers"><svg viewBox="195 0 1335 235" role="img" aria-label="everylife 기저귀 패키지"><image href="${escape(asset('images/everylife-stickers.png'))}" width="1765" height="891" /></svg><svg viewBox="195 240 1335 432" role="img" aria-label="everylife 아기 캐릭터"><defs><clipPath id="everylife-card-babies"><rect x="195" y="240" width="245" height="428"/><rect x="565" y="240" width="245" height="428"/><rect x="930" y="240" width="240" height="428"/><rect x="1280" y="240" width="250" height="428"/></clipPath></defs><image href="${escape(asset('images/everylife-stickers.png'))}" width="1765" height="891" clip-path="url(#everylife-card-babies)" /></svg></div></div>`
+  ? `<img class="project-preview-image" src="${escape(asset('images/everylife-card.webp'))}" alt="everylife 로고와 기저귀·아기 스티커" width="822" height="822" fetchpriority="high" loading="eager" decoding="async" />`
   : project.image
   ? `<img class="project-preview-image" src="${escape(asset(project.image))}" alt="${escape(project.title)} 웹사이트 미리보기" />`
   : project.video
