@@ -44,14 +44,9 @@ for i, data in enumerate(reader):
         upper_heart = candy_cutout(frame, (10, 299, 69, 350), 46, heart_shape=True)
         lower_heart = candy_cutout(frame, (10, 299, 69, 350), 36, heart_shape=True)
         rainbow = candy_cutout(frame, (27, 209, 68, 259), 30)
-        tooth = frame.crop((413, 0, 462, 55)).convert('RGBA')
-        tooth_mask = Image.new('L', tooth.size)
-        tooth_mask.putdata([255 if min(r, g, b) > 100 and max(r, g, b) - min(r, g, b) < 80 else 0 for r, g, b, _ in tooth.getdata()])
-        tooth.putalpha(tooth_mask.filter(ImageFilter.MedianFilter(3)))
-        tooth = tooth.resize((43, 48), Image.Resampling.LANCZOS)
         candies = [
             (worm, 94, 178, -28), (worm, 329, 202, 32),
-            (tooth, 101, 279, -45), (worm, 320, 322, -24),
+            (worm, 320, 322, -24),
             (heart, 329, 133, -12), (rainbow, 120, 337, 18),
             (upper_heart, 175, 96, 17), (lower_heart, 236, 349, -23),
         ]
