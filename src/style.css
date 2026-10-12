@@ -185,4 +185,4 @@ footer{border-top:0}
 
 .skill-menu .skill-list{min-width:0;width:max-content;max-width:calc(100vw - 36px)}
 
-.experience-menu .skill-list li{display:flex;justify-content:space-between;gap:24px}
+.experience-menu .skill-list li{display:flex;justify-content:space-between;gap:12px}
