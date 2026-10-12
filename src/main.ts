@@ -6,7 +6,7 @@ const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+
 const external = (url: string) => /^https?:\/\//.test(url)
 const arrow = '<span aria-hidden="true">↗</span>'
 const art = (project: Project, livePreview = false) => project.id === 'potential' && livePreview
-  ? `<div class="project-live-preview potential-live-preview"><video class="potential-preview-video" src="${escape(asset('videos/potential.mp4?v=9'))}" poster="${escape(asset('videos/potential.jpg?v=9'))}" muted loop playsinline preload="auto" aria-label="POTENTIAL 로고와 웹사이트 미리보기"></video></div>`
+  ? `<div class="potential-logo-cover"><img src="${escape(asset('images/potential-logo.png'))}" alt="POTENTIAL" /></div>`
   : project.id === 'glyfing' && livePreview
   ? `<video class="project-video" src="${escape(asset('videos/glyfing.mp4'))}" poster="${escape(asset('videos/glyfing.jpg'))}" muted loop playsinline preload="auto" aria-label="GLYFING 캐릭터와 젤리의 움직이는 미리보기"></video>`
   : project.id === 'everylife'
