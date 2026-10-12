@@ -173,3 +173,6 @@ footer{border-top:0}
 .goods-notebook-image{max-width:520px;margin-top:40px}
 
 .card-meta>.card-category{font-size:inherit;line-height:1.5}
+
+.experience-details{display:block;color:#000;font-size:13px;line-height:1.6}
+@media(max-width:600px){.experience-details{font-size:clamp(7px,2.2vw,12px);letter-spacing:0}}

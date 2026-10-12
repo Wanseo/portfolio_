@@ -20,7 +20,7 @@ const card = (project: Project, index: number) => `<button class="project-card" 
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 <header class="header" id="top"><div class="header-brand"><a class="wordmark" href="#top">wanseo jo<span class="wordmark-sub">PORTFOLIO</span></a></div><nav aria-label="주 메뉴"><details class="skill-menu"><summary>SKILL</summary><ul class="skill-list"><li>adobe illustrator</li><li>adobe photoshop</li><li>figma</li><li>AI</li><li>python</li><li>java</li><li>c++</li></ul></details><details class="skill-menu contact-menu"><summary>CONTACT</summary><ul class="skill-list"><li><a href="mailto:${escape(profile.email)}">${escape(profile.email)}</a></li></ul></details></nav></header>
-<main><section class="intro"><div class="intro-top"><span>${escape(profile.introduction).replace(/\n/g, '<br>')}</span></div></section>
+<main><section class="intro"><div class="intro-top"><div class="experience"><span class="work-label experience-label">${escape(profile.introduction.split('\n')[0]!)}</span><span class="experience-details">${escape(profile.introduction.split('\n').slice(1).join('\n')).replace(/\n/g, '<br>')}</span></div></div></section>
 <section id="work" class="work"><a href="#work" class="work-label">WORK</a><div class="project-grid">${projects.map(card).join('')}</div></section></main>
 <footer><div class="footer-bottom"><span>© ${new Date().getFullYear()} wanseo jo</span><span>Seoul, Korea</span></div></footer>
 <dialog id="project-dialog" aria-labelledby="dialog-title"><button class="close-button" aria-label="닫기">×</button><div id="dialog-content"></div></dialog>
