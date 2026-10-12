@@ -131,7 +131,7 @@ footer{border-top:0}
 .project-card[data-project="potential"]{background:#fff}
 .project-card[data-project="potential"] .card-top{color:#20201e}
 
-.glyfing-dialog-art{aspect-ratio:1}
+.glyfing-dialog-art{aspect-ratio:1.3}
 
 .glyfing-detail-video{display:block;width:100%;height:100%;object-fit:contain}
 
