@@ -199,4 +199,4 @@ footer{border-top:0}
 .card-meta{margin-top:5px}
 @media(max-width:600px){.card-meta{margin-top:3px}}
 
-#project-dialog:not(.goods-dialog) .dialog-copy>p{max-width:580px;word-break:keep-all}
+#project-dialog .dialog-copy p{max-width:580px;word-break:keep-all}
