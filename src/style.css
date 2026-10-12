@@ -166,3 +166,6 @@ footer{border-top:0}
 .goods-bottle-image{max-width:520px;margin-top:40px}
 
 .goods-macbook-image{width:86%}
+
+.goods-palette>div{text-align:center}
+.goods-palette i{margin-inline:auto}
