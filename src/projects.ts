@@ -20,10 +20,10 @@ export const profile = {
   introduction: 'I have hands-on experience in\nDevelopment(2021-2024)\nMarketing Planning(2025-2026)\nGraphic Design(2026-now)',
 }
 
-// 배열 순서대로 카드가 표시되며, 번호는 01부터 시작합니다.
+// 배열 순서대로 카드가 표시되며, 마지막 카드가 01입니다.
 export const projects: Project[] = [
-  { id: 'everylife', title: 'everylife', category: 'Merch Graphic Design', year: '2026', theme: 'everylife', description: '미국 프리미엄 기저귀 브랜드 everylife를 위한 굿즈 스티커 디자인입니다. 소프트한 느낌의 브랜드 키 컬러와 세리프 로고를 활용하여 기저귀를 착용하는 다양한 인종의 아기 캐릭터, 기저귀, 로고 스티커까지 확장했습니다.', role: 'Illustration · Graphic Design', image: 'images/everylife-design-board-spaced.svg?v=3' },
-  { id: 'guestbook', title: 'Guestbook', category: 'Interactive Website Development, Graphic Design', year: '2026', theme: 'form', description: '픽셀 그래픽과 움직이는 배경으로 만든 작은 방명록입니다. 방문자들은 자신의 이름과 메모를 남길 수 있습니다. 말랑이 캐릭터는 랜덤으로 배정됩니다.', role: 'Planning, Design, Development', url: 'https://wanseo.github.io/myfirstweb/', video: 'videos/guestbook.mp4?v=2', poster: 'videos/guestbook.jpg?v=2' },
-  { id: 'glyfing', title: 'GLYF', category: 'Development, Graphic Design', year: '2026', theme: 'glyfing', description: '핑크 글리터 배경 속 세 눈 캐릭터와 오브젝트를 구성한 인터랙티브 3D 웹사이트입니다. 방향키로 캐릭터를 움직이며 탐색할 수 있습니다.', role: 'Design, Development', url: 'https://wanseo.github.io/glyfing/', image: 'images/glyfing-preview.jpg' },
   { id: 'potential', title: 'POTENTIAL', category: 'Development, Graphic Design', year: '2026', theme: 'potential', description: '브랜드 POTENTIAL의 굿즈와 제품을 소개하는 웹사이트입니다. 제품 카테고리, 상세 페이지, 브랜드 소개와 아카이브를 탐색할 수 있도록 구성했습니다.', role: 'Design, Development', url: 'https://wanseo.github.io/potential/', image: 'images/potential-preview.jpg' },
+  { id: 'glyfing', title: 'GLYF', category: 'Development, Graphic Design', year: '2026', theme: 'glyfing', description: '핑크 글리터 배경 속 세 눈 캐릭터와 오브젝트를 구성한 인터랙티브 3D 웹사이트입니다. 방향키로 캐릭터를 움직이며 탐색할 수 있습니다.', role: 'Design, Development', url: 'https://wanseo.github.io/glyfing/', image: 'images/glyfing-preview.jpg' },
+  { id: 'guestbook', title: 'Guestbook', category: 'Interactive Website Development, Graphic Design', year: '2026', theme: 'form', description: '픽셀 그래픽과 움직이는 배경으로 만든 작은 방명록입니다. 방문자들은 자신의 이름과 메모를 남길 수 있습니다. 말랑이 캐릭터는 랜덤으로 배정됩니다.', role: 'Planning, Design, Development', url: 'https://wanseo.github.io/myfirstweb/', video: 'videos/guestbook.mp4?v=2', poster: 'videos/guestbook.jpg?v=2' },
+  { id: 'everylife', title: 'everylife', category: 'Merch Graphic Design', year: '2026', theme: 'everylife', description: '미국 프리미엄 기저귀 브랜드 everylife를 위한 굿즈 스티커 디자인입니다. 소프트한 느낌의 브랜드 키 컬러와 세리프 로고를 활용하여 기저귀를 착용하는 다양한 인종의 아기 캐릭터, 기저귀, 로고 스티커까지 확장했습니다.', role: 'Illustration · Graphic Design', image: 'images/everylife-design-board-spaced.svg?v=3' },
 ]
