@@ -55,7 +55,7 @@ footer{border-top:0}
 .project-role {
   display: flex;
   align-items: baseline;
-  gap: 16px;
+  gap: 10px;
   margin: 4px 0 24px;
   font-family: 'DM Sans', Arial, sans-serif;
 }
@@ -63,6 +63,7 @@ footer{border-top:0}
   margin-bottom: 0;
 }
 .project-role dt {
+  min-width: 34px;
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 1.3px;
