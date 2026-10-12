@@ -7,7 +7,7 @@ const external = (url: string) => /^https?:\/\//.test(url)
 const projectType = (project: Project) => project.id === 'everylife' ? 'Merch Sticker' : project.id === 'potential' ? 'Website' : 'Interactive Website'
 const arrow = '<span aria-hidden="true">↗</span>'
 const art = (project: Project, livePreview = false) => project.id === 'potential' && livePreview
-  ? `<div class="potential-logo-cover"><div class="potential-card-content"><img src="${escape(asset('images/potential-logo.png'))}" alt="POTENTIAL" /><p class="potential-card-story">He said to me, “You are my potential”<br>So I started making all sorts of things.<br>Maybe I take after my dad<br>I love making beautiful things.<br>I hope the things I make bring you joy.</p></div></div>`
+  ? `<div class="potential-logo-cover"><div class="potential-card-content" style="visibility:hidden"><img fetchpriority="high" loading="eager" decoding="async" src="${escape(asset('images/potential-logo.webp'))}" alt="POTENTIAL" /><p class="potential-card-story">He said to me, “You are my potential”<br>So I started making all sorts of things.<br>Maybe I take after my dad<br>I love making beautiful things.<br>I hope the things I make bring you joy.</p></div></div>`
   : project.id === 'glyfing' && livePreview
   ? `<video class="project-video" src="${escape(asset('videos/glyfing-main.mp4'))}" poster="${escape(asset('videos/glyfing-main.jpg'))}" muted loop playsinline preload="auto" aria-label="GLYF 캐릭터와 젤리의 움직이는 미리보기"></video>`
   : project.id === 'everylife'
@@ -27,6 +27,13 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 <dialog id="project-dialog" aria-labelledby="dialog-title"><button class="close-button" aria-label="닫기">×</button><div id="dialog-content"></div></dialog>
 `
 
+
+const potentialContent = document.querySelector<HTMLElement>('.potential-card-content')!
+const potentialLogo = potentialContent.querySelector<HTMLImageElement>('img')!
+// Reveal the logo and story in the same paint after the prioritized image is decoded.
+void potentialLogo.decode().catch(() => {}).then(() => {
+  potentialContent.style.visibility = 'visible'
+})
 
 const everylifeDetail = (project: Project) => `
   <article class="goods-case">
