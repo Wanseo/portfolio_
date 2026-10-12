@@ -9,7 +9,7 @@ const arrow = '<span aria-hidden="true">↗</span>'
 const art = (project: Project, livePreview = false) => project.id === 'potential' && livePreview
   ? `<div class="potential-logo-cover"><div class="potential-card-content" style="visibility:hidden"><img fetchpriority="high" loading="eager" decoding="async" src="${escape(asset('images/potential-logo.webp'))}" alt="POTENTIAL" /><p class="potential-card-story">He said to me, “You are my potential”<br>So I started making all sorts of things.<br>Maybe I take after my dad<br>I love making beautiful things.<br>I hope the things I make bring you joy.</p></div></div>`
   : project.id === 'glyfing' && livePreview
-  ? `<video class="project-video" src="${escape(asset('videos/glyfing-main.mp4'))}" poster="${escape(asset('videos/glyfing-main.jpg'))}" muted loop playsinline preload="auto" aria-label="GLYF 캐릭터와 젤리의 움직이는 미리보기"></video>`
+  ? `<video class="project-video" src="${escape(asset('videos/glyfing-main.mp4?v=2'))}" poster="${escape(asset('videos/glyfing-main.jpg?v=2'))}" muted loop playsinline preload="auto" aria-label="GLYF 캐릭터와 젤리의 움직이는 미리보기"></video>`
   : project.id === 'everylife'
   ? `<img class="project-preview-image" src="${escape(asset('images/everylife-card.webp'))}" alt="everylife 로고와 기저귀·아기 스티커" width="822" height="822" fetchpriority="high" loading="eager" decoding="async" />`
   : project.image
