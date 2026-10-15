@@ -22,18 +22,20 @@ const card = (project: Project, index: number) => `<button class="project-card" 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 <header class="header" id="top"><div class="header-brand"><a class="wordmark" href="#top">wanseo jo<span class="wordmark-sub">PORTFOLIO</span></a></div><nav aria-label="주 메뉴"><details class="skill-menu"><summary>SKILL</summary><ul class="skill-list"><li>adobe illustrator</li><li>adobe photoshop</li><li>figma</li><li>AI</li><li>python</li><li>java</li><li>c++</li></ul></details><details class="skill-menu contact-menu"><summary>CONTACT</summary><ul class="skill-list"><li><a href="mailto:${escape(profile.email)}">${escape(profile.email)}</a></li></ul></details></nav></header>
 <main><section class="intro"><div class="intro-top"><span>${escape(profile.introduction)}</span></div></section>
-<section id="work" class="work"><a href="#work" class="work-label">WORK</a><div class="project-grid">${projects.map(card).join('')}</div></section></main>
+<section id="work" class="work"><a href="#work" class="work-label">WORK</a><div class="project-grid">${projects.map((project, index) => project.id === 'potential' ? '' : card(project, index)).join('')}</div></section></main>
 <footer><div class="footer-bottom"><span>© ${new Date().getFullYear()} wanseo jo</span><span>Seoul · Korea</span></div></footer>
 <dialog id="project-dialog" aria-labelledby="dialog-title"><button class="close-button" aria-label="닫기">×</button><div id="dialog-content"></div></dialog>
 `
 
 
-const potentialContent = document.querySelector<HTMLElement>('.potential-card-content')!
-const potentialLogo = potentialContent.querySelector<HTMLImageElement>('img')!
+const potentialContent = document.querySelector<HTMLElement>('.potential-card-content')
+const potentialLogo = potentialContent?.querySelector<HTMLImageElement>('img')
 // Reveal the logo and story in the same paint after the prioritized image is decoded.
-void potentialLogo.decode().catch(() => {}).then(() => {
-  potentialContent.style.visibility = 'visible'
-})
+if (potentialContent && potentialLogo) {
+  void potentialLogo.decode().catch(() => {}).then(() => {
+    potentialContent.style.visibility = 'visible'
+  })
+}
 
 const everylifeDetail = (project: Project) => `
   <article class="goods-case">
@@ -70,7 +72,7 @@ document.querySelectorAll<HTMLButtonElement>('[data-project]').forEach(button =>
   const project = projects.find(item => item.id === button.dataset.project)!
   projectDialog.dataset.project = project.id
   projectDialog.classList.toggle('goods-dialog', project.id === 'everylife')
-  document.querySelector('#dialog-content')!.innerHTML = project.id === 'everylife' ? everylifeDetail(project) : `<div class="dialog-art${project.id === 'glyfing' ? ' glyfing-dialog-art' : project.id === 'potential' ? ' potential-dialog-art' : ''}">${project.id === 'glyfing' ? `<video class="glyfing-detail-video" src="${escape(asset('videos/glyfing-detail.mp4?v=8'))}" poster="${escape(asset('videos/glyfing-detail.jpg?v=8'))}" muted loop playsinline preload="auto" aria-label="GLYF 최신 웹사이트 녹화"></video>` : project.id === 'potential' ? `<video class="potential-detail-video" src="${escape(asset('videos/potential.mp4?v=13'))}" poster="${escape(asset('videos/potential.jpg?v=13'))}" muted loop playsinline preload="auto" aria-label="POTENTIAL 웹사이트 미리보기"></video>` : art(project)}</div><div class="dialog-copy"><span class="eyebrow">${projectType(project)} ${escape(project.year)}</span><h2 id="dialog-title">${escape(project.title)}</h2><p>${escape(project.description).replace(/\n/g, '<br>')}</p>${project.role ? `<dl class="project-role"><dt>Role</dt><dd>${escape(project.role)}</dd></dl>` : ''}${project.url && external(project.url) ? `<a class="outline-button" href="${escape(project.url)}" target="_blank" rel="noopener noreferrer">VISIT WEBSITE ${arrow}</a>` : '<span class="sample-label">CONCEPT PREVIEW · 샘플 프로젝트</span>'}</div>`
+  document.querySelector('#dialog-content')!.innerHTML = project.id === 'everylife' ? everylifeDetail(project) : `<div class="dialog-art${project.id === 'glyfing' ? ' glyfing-dialog-art' : project.id === 'potential' ? ' potential-dialog-art' : ''}">${project.id === 'glyfing' ? `<video class="glyfing-detail-video" src="${escape(asset('videos/glyfing-detail.mp4?v=8'))}" poster="${escape(asset('videos/glyfing-detail.jpg?v=8'))}" muted loop playsinline preload="auto" aria-label="GLYF 최신 웹사이트 녹화"></video>` : project.id === 'potential' ? `<video class="potential-detail-video" src="${escape(asset('videos/potential.mp4?v=13'))}" poster="${escape(asset('videos/potential.jpg?v=13'))}" muted loop playsinline preload="auto" aria-label="POTENTIAL 웹사이트 미리보기"></video>` : art({ ...project, video: project.detailVideo ?? project.video, poster: project.detailPoster ?? project.poster })}</div><div class="dialog-copy"><span class="eyebrow">${projectType(project)} ${escape(project.year)}</span><h2 id="dialog-title">${escape(project.title)}</h2><p>${escape(project.description).replace(/\n/g, '<br>')}</p>${project.role ? `<dl class="project-role"><dt>Role</dt><dd>${escape(project.role)}</dd></dl>` : ''}${project.url && external(project.url) ? `<a class="outline-button" href="${escape(project.url)}" target="_blank" rel="noopener noreferrer">VISIT WEBSITE ${arrow}</a>` : '<span class="sample-label">CONCEPT PREVIEW · 샘플 프로젝트</span>'}</div>`
   openDialog(projectDialog)
   projectDialog.scrollTop = 0
   projectDialog.querySelectorAll('video').forEach(video => { video.muted = true; video.controls = true; if (!reducedMotion.matches) void video.play().catch(() => {}) })
